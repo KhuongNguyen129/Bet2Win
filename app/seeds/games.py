@@ -17,9 +17,9 @@ def seed_games():
     db.session.add(SEA_vs_RAM)
     db.session.commit()
 
-def undo_spots():
+def undo_games():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.spots RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM games"))
 
