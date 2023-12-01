@@ -83,7 +83,7 @@ def update_game(id):
         game.active=form.data["active"]
         db.session.commit()
 
-        return {"resUpdateSpot": game.to_dict()}
+        return {"resUpdateGame": game.to_dict()}
 
     return {"error": validation_errors_to_error_messages(form.errors)}, 400
 
@@ -97,17 +97,17 @@ def delete_game(gameId):
     currentGame = Game.query.get(gameId)
 
     if not currentGame:
-        return {'error': 'Spot does not exists'}, 404
+        return {'error': 'Game does not exists'}, 404
 
     if currentGame.owner_id != current_user.id:
-        return {'error': 'You do not have permission to delete this spot'}, 401
+        return {'error': 'You do not have permission to delete this game'}, 401
 
 
 
 
     db.session.delete(currentGame)
     db.session.commit()
-    return {'error': 'Spot successfully deleted'}
+    return {'error': 'Game successfully deleted'}
 
 
 
