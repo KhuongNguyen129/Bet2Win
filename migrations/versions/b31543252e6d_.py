@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2b0e1d02a548
+Revision ID: b31543252e6d
 Revises: 
-Create Date: 2023-12-02 09:12:50.913612
+Create Date: 2023-12-02 12:45:21.246186
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '2b0e1d02a548'
+revision = 'b31543252e6d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -64,10 +63,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['team_2_id'], ['teams.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
-
 
     op.create_table('bets',
     sa.Column('id', sa.Integer(), nullable=False),
