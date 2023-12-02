@@ -29,4 +29,5 @@ class Bet(db.Model):
             'outcome': self.outcome,
             'user_id': self.user_id,
             'game_id': self.game_id,
+            'game': self.game.to_dict() if self.game else None
         }

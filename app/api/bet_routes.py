@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Bet
-from app.forms import BetForm
+from app.forms import BetFormCreate, BetFormUpdate
 from app.api.auth_routes import validation_errors_to_error_messages
 
 bet_routes = Blueprint("bets", __name__)
@@ -30,7 +30,7 @@ def create_bet():
     """
     Create bet (while logged in)
     """
-    form = BetForm()
+    form = BetFormCreate()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -40,6 +40,7 @@ def create_bet():
             under_input=form.data["under_input"],
             over_input=form.data["over_input"],
             outcome=form.data["outcome"],
+            game_id= form.data["game_id"],
             user_id= current_user.id
         )
 
@@ -63,7 +64,7 @@ def update_bet(id):
     if current_user.id != bet.user_id:
         return {"message": "You do not have permission to update this bet"}, 403
 
-    form = BetForm()
+    form = BetFormUpdate()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -73,7 +74,27 @@ def update_bet(id):
         bet.over_input=form.data["over_input"]
         bet.outcome=form.data["outcome"]
         db.session.commit()
-
+    
         return {"resUpdateBet": bet.to_dict()}
-
+  
     return {"error": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@bet_routes.route("/<int:betId>", methods=["DELETE"])
+@login_required
+def delete_bet(betId):
+    """
+    Delete bet (while logged in)
+    """
+    currentBet = Bet.query.get(betId)
+
+    if not currentBet:
+        return {'error': 'Bet does not exists'}, 404
+
+    if currentBet.user_id != current_user.id:
+        return {'error': 'You do not have permission to delete this Bet'}, 401
+
+
+    db.session.delete(currentBet)
+    db.session.commit()
+    return {'error': 'Bet successfully deleted'}
