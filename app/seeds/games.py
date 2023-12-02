@@ -9,8 +9,6 @@ def seed_games():
         spread_1 = -4.5,
         spread_2 = 4.5,
         total = 45,
-        money_line_1 = 250,
-        money_line_2 = -150,
         owner_id = 1,
         active = True,
     )
@@ -23,8 +21,6 @@ def seed_games():
         spread_1 = -6.5,
         spread_2 = 6.5,
         total = 46,
-        money_line_1 = 260,
-        money_line_2 = -110,
         owner_id = 2,
         active = True,
     )
