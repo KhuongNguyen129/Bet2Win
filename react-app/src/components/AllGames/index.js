@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGamesThunk } from "../../store/games";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function AllGames({ isLoaded }) {
+export default function AllGames() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
+  const allGames = Object.values(games);
+  console.log("🚀 >>>>>>>>>> ~ allGames:", allGames);
   const sessionUser = useSelector((state) => state.session.user);
   console.log("🚀 >>>>>>>>>> ~ games:", games);
 
@@ -14,7 +17,18 @@ export default function AllGames({ isLoaded }) {
 
   return (
     <>
-      <h1>AllGames</h1>
+      {allGames.map((game) => (
+        <NavLink key={game.id} to={`/spots/${game.id}`}>
+          <div>
+            <p>{game.owner_id}</p>
+            <p>{game.team_1.initial}</p>
+            <img src={game.team_1.initial} />
+            <p>time</p>
+            <p>{game.team_2.initial}</p>
+            <img src={game.team_2.initial} />
+          </div>
+        </NavLink>
+      ))}
     </>
   );
 }
