@@ -18,14 +18,14 @@ export default function AllGames() {
   return (
     <>
       {allGames.map((game) => (
-        <NavLink key={game.id} to={`/spots/${game.id}`}>
+        <NavLink id="allgames" key={game.id} to={`/games/${game.id}`}>
           <div>
             <p>{game.owner_id}</p>
             <p>{game.team_1.initial}</p>
-            <img src={game.team_1.initial} />
+            <img src={game.team_1.logo} />
             <p>time</p>
             <p>{game.team_2.initial}</p>
-            <img src={game.team_2.initial} />
+            <img src={game.team_2.logo} />
           </div>
         </NavLink>
       ))}

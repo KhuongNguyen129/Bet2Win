@@ -1,6 +1,8 @@
 const GET_ALL_GAMES = "games/GET_ALL_GAMES";
 const GET_GAME = "games/GET_GAME";
-const CREAT_GAME = "games/CREATE_GAME";
+const CREATE_GAME = "games/CREATE_GAME";
+const UPDATE_GAME = "games/UPDATE_GAME";
+const DELETE_GAME = "games/DELETE_GAME";
 
 // ACTION
 const getAllGames = (games) => {
@@ -19,8 +21,22 @@ const getGame = (game) => {
 
 const createGame = (newGame) => {
   return {
-    type: CREAT_GAME,
+    type: CREATE_GAME,
     newGame,
+  };
+};
+
+const updateGame = (game) => {
+  return {
+    type: UPDATE_GAME,
+    game,
+  };
+};
+
+const deleteGame = (gameId) => {
+  return {
+    type: DELETE_GAME,
+    gameId,
   };
 };
 
@@ -45,11 +61,11 @@ export const getGameThunk = (gameId) => async (dispatch) => {
   }
 };
 
-export const createGameThunk = (newGame) => async (dispatch) => {
+export const createGameThunk = (newGames) => async (dispatch) => {
   try {
     const res = await fetch("/api/games/new", {
       method: "POST",
-      body: newGame,
+      body: newGames,
     });
 
     if (res.ok) {
@@ -58,11 +74,41 @@ export const createGameThunk = (newGame) => async (dispatch) => {
       dispatch(createGame(createdNewGame));
       return createdNewGame;
     } else {
-      console.log("There is an error creating a new Game");
+      console.error(`Server error: ${res.status}`);
       return;
     }
-  } catch (error) {
-    console.error("Error creating a new Game:", error);
+  } catch (e) {
+    return await e.json();
+  }
+};
+
+export const updateGameThunk = (formData, gameId) => async (dispatch) => {
+  const res = await fetch(`/api/games/${gameId}`, {
+    method: "PUT",
+    body: formData,
+  });
+  if (res.ok) {
+    const game = await res.json();
+    dispatch(updateGame(game));
+    return game;
+  } else {
+    const data = await res.json();
+    return data;
+  }
+};
+
+export const deleteGameThunk = (gameId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/games/${gameId}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      const spot = await res.json();
+      dispatch(deleteGame(gameId));
+    }
+  } catch (e) {
+    return await e.json();
   }
 };
 
@@ -84,9 +130,19 @@ const gamesReducer = (state = initialState, action) => {
     case GET_GAME:
       newState = { ...state, allGames: { ...state.allGames } };
       newState.allGames[action.game.id] = action.game;
-    case CREAT_GAME:
+      return newState;
+    case CREATE_GAME:
       newState = { ...state, allGames: { ...state.allGames } };
       newState.allGames[action.newGame.id] = action.newGame;
+      return newState;
+    case UPDATE_GAME:
+      newState = { ...state, allGames: { ...state.allGames } };
+      newState.allGames[action.game.id] = action.game;
+      return newState;
+    case DELETE_GAME:
+      newState = { ...state, allGames: { ...state.allGames } };
+      delete newState.allGames[action.id];
+      return newState;
     default:
       return state;
   }

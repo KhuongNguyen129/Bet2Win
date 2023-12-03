@@ -9,6 +9,7 @@ import Hompage from "./components/HomePage";
 import AllGames from "./components/AllGames";
 import CreateNewGame from "./components/CreateGame";
 import Game from "./components/Game";
+import UpdateGame from "./components/UpdateGames";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/games/:gameId">
             <Game />
+          </Route>
+          <Route path="/games/:gameId/update">
+            <UpdateGame />
           </Route>
           <Route path="/login">
             <LoginFormPage />
