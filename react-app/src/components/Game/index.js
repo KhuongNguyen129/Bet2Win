@@ -23,9 +23,9 @@ export default function Game() {
     dispatch(getGameThunk(gameId));
   }, [dispatch, gameId]);
 
-  const handleGameUpdate = () => {
-    history.push(`/games/${gameId}/update`);
-  };
+  // const handleGameUpdate = () => {
+  //   history.push(`/games/${gameId}/update`);
+  // };
 
   if (!game) {
     return null;
@@ -33,9 +33,9 @@ export default function Game() {
 
   return (
     <div>
-      <p>{game.spread_1}</p>
+      <p>{game.time}:00</p>
       <OpenModalButton
-        buttonText="Upload Game"
+        buttonText="Update Game"
         modalComponent={<UpdateGame gameId={gameId} />}
       ></OpenModalButton>
       <OpenModalButton

@@ -40,7 +40,7 @@ def create_games():
             spread_1=form.data["spread_1"],
             spread_2=form.data["spread_2"],
             total=form.data["total"],
-            owner_id=form.data["owner_id"],
+            owner_id=current_user.id,
             active=form.data["active"],
         )
 
@@ -75,7 +75,6 @@ def update_game(id):
         game.spread_1=form.data["spread_1"]
         game.spread_2=form.data["spread_2"]
         game.total=form.data["total"]
-        game.owner_id=form.data["owner_id"]
         game.active=form.data["active"]
         db.session.commit()
 

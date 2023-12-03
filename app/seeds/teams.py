@@ -5,7 +5,7 @@ def seed_teams():
     SEA = Team(
         name = "Seattle Seahawks",
         initial = "SEA",
-        logo = "https://banner2.cleanpng.com/20190422/iip/kisspng-seattle-seahawks-nfl-american-football-logo-5cbde179f1e644.7042926715559478979908.jpg",
+        logo = "https://www.pngall.com/wp-content/uploads/13/Seahawks-Logo-PNG-File.png",
         state = "WA"
     )
     db.session.add(SEA)
@@ -13,7 +13,7 @@ def seed_teams():
     DAL = Team(
         name = "Dallas Cowboys",
         initial = "DAL",
-        logo = "https://cdn.imgbin.com/6/22/24/imgbin-dallas-cowboys-nfl-new-york-jets-indianapolis-colts-kansas-city-chiefs-cowboy-design-0eHWN9zihLQqc4dvPdv71USsz.jpg",
+        logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Dallas_Cowboys.svg/100px-Dallas_Cowboys.svg.png",
         state = "TX"
     )
     db.session.add(DAL)
@@ -21,7 +21,7 @@ def seed_teams():
     CHARGERS = Team(
         name = "LA Chargers",
         initial = "LA",
-        logo = "https://www.vhv.rs/dpng/d/590-5906447_transparent-los-angeles-chargers-logo-hd-png-download.png",
+        logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Los_Angeles_Chargers_logo.svg/408px-Los_Angeles_Chargers_logo.svg.png",
         state = "CA"
     )
     db.session.add(CHARGERS)
@@ -29,7 +29,7 @@ def seed_teams():
     NE = Team(
         name = "NE Patriots",
         initial = "NE",
-        logo = "https://toppng.com/uploads/preview/new-england-patriots-logo-115487972927fqc8yzr3b.png",
+        logo = "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/New_England_Patriots_logo.svg/2560px-New_England_Patriots_logo.svg.png",
         state = "MA"
     )
     db.session.add(NE)

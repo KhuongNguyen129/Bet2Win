@@ -50,9 +50,73 @@ export default function CreateNewGame() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1>CreateTeam</h1>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>Time</label>
+          <div>
+            <input
+              type="number"
+              placeholder="Time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label>team1</label>
+            <input
+              type="number"
+              value={team1}
+              onChange={(e) => setTeam1(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label>team2</label>
+            <input
+              type="number"
+              value={team2}
+              onChange={(e) => setTeam2(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label>spread1</label>
+            <input
+              type="number"
+              value={spread1}
+              onChange={(e) => setSpread1(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label>spread2</label>
+            <input
+              type="number"
+              value={spread2}
+              onChange={(e) => setSpread2(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label>total</label>
+            <input
+              type="number"
+              value={total}
+              onChange={(e) => setTotal(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>active</label>
+            <input
+              type="number"
+              value={active}
+              onChange={(e) => setActive(e.target.value)}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   );
 }

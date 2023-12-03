@@ -104,8 +104,9 @@ export const deleteGameThunk = (gameId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      const spot = await res.json();
+      const game = await res.json();
       dispatch(deleteGame(gameId));
+      return game;
     }
   } catch (e) {
     return await e.json();
