@@ -5,3 +5,15 @@
 .hidden {
   display: none;
 }
+
+#top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 30px;
+
+}
+
+#big2win-logo {
+  width: 100px;
+  height: 100px;
+}

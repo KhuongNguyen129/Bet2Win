@@ -19,12 +19,12 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_bets()
-        undo_teams()
         undo_games()
+        undo_teams()
         undo_users()
     seed_users()
-    seed_games()
     seed_teams()
+    seed_games()
     seed_bets()
     # Add other seed functions here
 
@@ -33,8 +33,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_bets()
-    undo_teams()
     undo_games()
+    undo_teams()
     undo_users()
     # Add other undo functions here
 
