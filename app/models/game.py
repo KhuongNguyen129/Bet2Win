@@ -8,11 +8,11 @@ class Game(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.String, nullable=False)
+    time = db.Column(db.Integer, nullable=False)
     spread_1 = db.Column(db.Float, nullable=False) 
     spread_2 = db.Column(db.Float, nullable=False)
     total = db.Column(db.Float, nullable=False)
-    active = db.Column(db.Boolean, nullable=False)
+    # active = db.Column(db.Boolean, nullable=False)
 
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     
@@ -35,7 +35,7 @@ class Game(db.Model):
             'spread_1': self.spread_1,
             'spread_2': self.spread_2,
             'total': self.total,
-            'active': self.active,
+            # 'active': self.active,
             'owner_id': self.owner_id,
             'user': self.user.to_dict(),
         }

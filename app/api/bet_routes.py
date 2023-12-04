@@ -7,9 +7,9 @@ from app.api.auth_routes import validation_errors_to_error_messages
 bet_routes = Blueprint("bets", __name__)
 
 @bet_routes.route('/')
-
 def get_all_bets():
     bets = Bet.query.all()
+    # print("This is bet from print >>>>>>>:       ", bets)
     return jsonify([bet.to_dict() for bet in bets])
 
 @bet_routes.route("/<int:id>")

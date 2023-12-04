@@ -71,8 +71,8 @@ export const createGameThunk = (newGames) => async (dispatch) => {
     if (res.ok) {
       const createdNewGame = await res.json();
 
-      dispatch(createGame(createdNewGame));
-      return createdNewGame;
+      dispatch(createGame(createdNewGame.newGame));
+      return createdNewGame.newGame;
     } else {
       console.error(`Server error: ${res.status}`);
       return;
@@ -89,8 +89,8 @@ export const updateGameThunk = (formData, gameId) => async (dispatch) => {
   });
   if (res.ok) {
     const game = await res.json();
-    dispatch(updateGame(game));
-    return game;
+    dispatch(updateGame(game.resUpdateGame));
+    return game.resUpdateGame;
   } else {
     const data = await res.json();
     return data;
@@ -104,8 +104,9 @@ export const deleteGameThunk = (gameId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      const spot = await res.json();
+      const game = await res.json();
       dispatch(deleteGame(gameId));
+      return game.error;
     }
   } catch (e) {
     return await e.json();
