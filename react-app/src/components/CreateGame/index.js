@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createGameThunk } from "../../store/games";
+import { getAllTeamsThunk } from "../../store/teams";
 
 export default function CreateNewGame() {
   const dispatch = useDispatch();
@@ -13,8 +14,11 @@ export default function CreateNewGame() {
   const [spread1, setSpread1] = useState("");
   const [spread2, setSpread2] = useState("");
   const [total, setTotal] = useState("");
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
+  const teams = useSelector((state) => state.teams.allTeams);
+  const teamObj = Object.values(teams);
+  console.log("🚀 >>>>>>>>>> ~ teamObj:", teamObj);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +30,16 @@ export default function CreateNewGame() {
     formData.append("spread_1", spread1);
     formData.append("spread_2", spread2);
     formData.append("total", total);
-    formData.append("active", active);
+    // formData.append("active", active);
 
     await dispatch(createGameThunk(formData));
+
     history.push(`/games`);
   };
+
+  useEffect(() => {
+    dispatch(getAllTeamsThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     const errObj = {};
@@ -44,40 +53,45 @@ export default function CreateNewGame() {
     if (!spread1) errObj.spread1 = "Spread1 is required";
     if (!spread2) errObj.spread2 = "Spread2 is required";
     if (!total) errObj.total = "Total is required";
-    if (!active) errObj.active = "Active is required";
+    // if (!active) errObj.active = "Active is required";
     setValidationErrors(errObj);
-  }, [time, team1, team2, spread1, spread2, total, active]);
+  }, [time, team1, team2, spread1, spread2, total]);
 
   return (
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <label>Time</label>
           <div>
+            <label>Time</label>
             <input
               type="number"
-              placeholder="Time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
 
           <div>
-            <label>team1</label>
-            <input
-              type="number"
-              value={team1}
-              onChange={(e) => setTeam1(e.target.value)}
-            />
+            <label>Team 1</label>
+            <select value={team1} onChange={(e) => setTeam1(e.target.value)}>
+              <option value="">Select Team</option>
+              {teamObj.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
-            <label>team2</label>
-            <input
-              type="number"
-              value={team2}
-              onChange={(e) => setTeam2(e.target.value)}
-            />
+            <label>Team 2</label>
+            <select value={team2} onChange={(e) => setTeam2(e.target.value)}>
+              <option value="">Select Team</option>
+              {teamObj.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
@@ -106,14 +120,7 @@ export default function CreateNewGame() {
               onChange={(e) => setTotal(e.target.value)}
             />
           </div>
-          <div>
-            <label>active</label>
-            <input
-              type="number"
-              value={active}
-              onChange={(e) => setActive(e.target.value)}
-            />
-          </div>
+
           <button type="submit">Submit</button>
         </form>
       </div>

@@ -10,6 +10,7 @@ import AllGames from "./components/AllGames";
 import CreateNewGame from "./components/CreateGame";
 import Game from "./components/Game";
 import UpdateGame from "./components/UpdateGames";
+import AllBets from "./components/AllBets";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
         <Switch>
           <Route exact path="/games">
             <AllGames />
+          </Route>
+          <Route path="/bets">
+            <AllBets />
           </Route>
           <Route path="/games/new">
             <CreateNewGame />

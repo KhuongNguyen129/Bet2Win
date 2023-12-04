@@ -10,7 +10,7 @@ def seed_games():
         spread_2 = 4.5,
         total = 45,
         owner_id = 1,
-        active = False,
+        # active = False
     )
     db.session.add(SEA_vs_DAL)
 
@@ -22,7 +22,7 @@ def seed_games():
         spread_2 = 2.5,
         total = 42,
         owner_id = 1,
-        active = False,
+        # active = False,
     )
     db.session.add(ARI_vs_BAL)
 
@@ -34,7 +34,7 @@ def seed_games():
         spread_2 = 1.5,
         total = 41,
         owner_id = 3,
-        active = False,
+        # active = False,
     )
     db.session.add(ALT_vs_BUFF)
     
@@ -46,7 +46,7 @@ def seed_games():
         spread_2 = 6.5,
         total = 46,
         owner_id = 2,
-        active = False,
+        # active = False,
     )
     db.session.add(LA_vs_NE)
     db.session.commit()

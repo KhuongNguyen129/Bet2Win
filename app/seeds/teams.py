@@ -166,7 +166,7 @@ def seed_teams():
     KC = Team(
         name = "Kansas City Chiefs",
         initial = "KC",
-        logo = "https://banner2.cleanpng.com/20180402/ghw/kisspng-kansas-city-chiefs-nfl-tennessee-titans-logo-chief-5ac26ef2b53dd3.8035669015226918267424.jpg",
+        logo = "https://logos-world.net/wp-content/uploads/2020/05/Kansas-City-Chiefs-logo.png",
         state = "MO"
     )
     db.session.add(KC)
