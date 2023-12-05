@@ -1,0 +1,29 @@
+
+.homepage-container {
+    position: relative;
+    height: 100vh;
+    background-image: url('https://media.discordapp.net/attachments/1110721109076221993/1180589157198860439/IMG_0908.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+.redirect-link {
+    text-decoration: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 5%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the link is on top of the image */
+}
+
+.redirect-link  > a {
+    text-decoration: none;
+    border-radius: 5px;
+    color: rgb(8 90 152);
+    background-color: white;
+    box-shadow: 2px 2px 4px white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 40px;
+} 
