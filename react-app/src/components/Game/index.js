@@ -73,7 +73,7 @@ export default function Game() {
         </div>
       </div>
       <OpenModalButton
-        buttonText="Create Bet"
+        buttonText="Bet"
         modalComponent={<CreateNewBet gameId={gameId} />}
       ></OpenModalButton>
       <OpenModalButton

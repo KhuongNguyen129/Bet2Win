@@ -18,18 +18,12 @@ export default function UpdateBet({ betId }) {
   const [overBet, setOverBet] = useState(bet.over_input || 0);
   const [underBet, setUnderBet] = useState(bet.under_input || 0);
 
-  // const [active, setActive] = useState(false);
   useEffect(() => {
     dispatch(getAllBetsThunk());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getGameThunk(betId)).then((response) => {
-      setSpread1Bet(response.spread_1_input);
-      setSpread2Bet(response.spread_2_input);
-      setOverBet(response.over_input);
-      setUnderBet(response.under_input);
-    });
+    dispatch(getGameThunk(betId));
   }, [dispatch, betId]);
 
   const handleSubmit = async (e) => {
@@ -41,9 +35,10 @@ export default function UpdateBet({ betId }) {
     formData.append("over_input", overBet);
     formData.append("under_input", underBet);
 
-    dispatch(updateBetThunk(formData, betId));
+    dispatch(updateBetThunk(formData, betId)).then((res) => {
+      history.push(`/bets/${betId}`);
+    });
     closeModal();
-    history.push(`/bets/${betId}`);
   };
 
   return (
