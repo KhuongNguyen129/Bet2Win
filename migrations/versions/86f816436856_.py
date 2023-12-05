@@ -1,21 +1,16 @@
 """empty message
 
-Revision ID: 0c69dfcc370d
+Revision ID: 86f816436856
 Revises: 
-Create Date: 2023-12-04 19:47:42.721861
+Create Date: 2023-12-05 08:03:44.023473
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
-
 
 # revision identifiers, used by Alembic.
-revision = '0c69dfcc370d'
+revision = '86f816436856'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,7 +29,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
-    
+
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(), nullable=False),
@@ -49,7 +44,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
 
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -69,7 +63,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
 
-
     op.create_table('bets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('spread_1_input', sa.Integer(), nullable=True),
@@ -86,8 +79,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE bets SET SCHEMA {SCHEMA};")
-
-
     # ### end Alembic commands ###
 
 
