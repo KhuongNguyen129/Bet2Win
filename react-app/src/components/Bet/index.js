@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { getBetThunk } from "../../store/bets";
 import UpdateBet from "../UpdateBets";
 import OpenModalButton from "../OpenModalButton";
+import DeleteBet from "../DeleteBet";
 
 export default function Bet() {
   const { betId } = useParams();
@@ -48,6 +49,10 @@ export default function Bet() {
       <OpenModalButton
         buttonText="Update Bet"
         modalComponent={<UpdateBet betId={betId} />}
+      ></OpenModalButton>
+      <OpenModalButton
+        buttonText="Delete Bet"
+        modalComponent={<DeleteBet betId={betId} />}
       ></OpenModalButton>
     </>
   );
