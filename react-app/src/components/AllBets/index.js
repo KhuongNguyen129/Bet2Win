@@ -7,10 +7,11 @@ export default function AllBets() {
   const dispatch = useDispatch();
   const bets = useSelector((state) => state.bets.allBets);
   console.log("🚀 >>>>>>>>>> ~ bets:", bets);
-  const allBets = Object.values(bets);
-  console.log("🚀 >>>>>>>>>> ~ allBets:", allBets);
-
   const sessionUser = useSelector((state) => state.session.user);
+  const allBets = Object.values(bets).filter(
+    (bet) => bet.user_id === sessionUser.id
+  );
+  console.log("🚀 >>>>>>>>>> ~ allBets:", allBets);
 
   useEffect(() => {
     dispatch(getAllBetsThunk());
@@ -21,33 +22,25 @@ export default function AllBets() {
       <div>
         {allBets &&
           allBets.map((bet) => (
-            <p>Hello</p>
-            // <div>
-            //   <NavLink key={bet.id} to={`/bets/${bet.id}`}>
-            //     <div>
-            //       <p>{bet.game.team_1.name}</p>
-            //       <p>{bet.game.spread_1}</p>
+            <div>
+              <NavLink key={bet.id} to={`/bets/${bet.id}`}>
+                <div>
+                  <p>{bet.game.team_1.name}</p>
+                  <p>{bet.game.spread_1}</p>
 
-            //       <input
-            //         type="text"
-            //         name="spread1"
-            //         value={bet.spread_1_input}
-            //       />
+                  <p>{bet.spread_1_input}$</p>
 
-            //       <p>{bet.game.team_2.name}</p>
-            //       <p>{bet.game.spread_2}</p>
-            //       <input
-            //         type="text"
-            //         name="spread2"
-            //         value={bet.spread_2_input}
-            //       />
+                  <p>{bet.game.team_2.name}</p>
+                  <p>{bet.game.spread_2}</p>
 
-            //       <p>{bet.game.total}</p>
-            //       <p>{bet.game.under_input}</p>
-            //       <p>{bet.game.over_input}</p>
-            //     </div>
-            //   </NavLink>
-            // </div>
+                  <p>{bet.spread_2_input}$</p>
+
+                  <p>{bet.game.total}</p>
+                  <p>{bet.game.under_input}</p>
+                  <p>{bet.game.over_input}</p>
+                </div>
+              </NavLink>
+            </div>
           ))}
       </div>
     </>

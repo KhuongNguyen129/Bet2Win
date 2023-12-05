@@ -11,6 +11,8 @@ import CreateNewGame from "./components/CreateGame";
 import Game from "./components/Game";
 import UpdateGame from "./components/UpdateGames";
 import AllBets from "./components/AllBets";
+import Bet from "./components/Bet";
+import CreateNewBet from "./components/CreateBet";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,9 +38,6 @@ function App() {
           <Route exact path="/games">
             <AllGames />
           </Route>
-          <Route path="/bets">
-            <AllBets />
-          </Route>
           <Route path="/games/new">
             <CreateNewGame />
           </Route>
@@ -47,6 +46,15 @@ function App() {
           </Route>
           <Route path="/games/:gameId/update">
             <UpdateGame />
+          </Route>
+          <Route exact path="/bets">
+            <AllBets />
+          </Route>
+          <Route path="/bets/new">
+            <CreateNewBet />
+          </Route>
+          <Route path="/bets/:betId">
+            <Bet />
           </Route>
           <Route path="/login">
             <LoginFormPage />

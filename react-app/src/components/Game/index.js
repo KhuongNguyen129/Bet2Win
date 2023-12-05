@@ -7,6 +7,7 @@ import { getGameThunk } from "../../store/games";
 import UpdateGame from "../UpdateGames";
 import OpenModalButton from "../OpenModalButton/index";
 import DeleteButton from "../DeleteGame";
+import CreateNewBet from "../CreateBet";
 
 export default function Game() {
   const { gameId } = useParams();
@@ -33,15 +34,48 @@ export default function Game() {
 
   return (
     <div>
-      <p>{game.time}:00</p>
-      <img src={game.team_1.logo} style={{ width: "120px", height: "90px" }} />
-      <p>{game.team_1.name}</p>
-      <img src={game.team_2.logo} style={{ width: "120px", height: "90px" }} />
-      <p>{game.team_2.name}</p>
-      <p>{game.spread_1}</p>
-      <p>{game.spread_2}</p>
-      <p>{game.total}</p>
+      <div>
+        <div>
+          <p>Time</p>
+          <p>{game.time}:00</p>
+        </div>
+        <div>
+          <p>Teams</p>
+          <div>
+            <img
+              src={game.team_1.logo}
+              style={{ width: "120px", height: "90px" }}
+            />
+            <p>{game.team_1.name}</p>
+          </div>
+          <div>
+            <img
+              src={game.team_2.logo}
+              style={{ width: "120px", height: "90px" }}
+            />
+            <p>{game.team_2.name}</p>
+          </div>
+        </div>
 
+        <div>
+          <p>Spread</p>
+          <div>
+            <p>{game.spread_1}</p>
+          </div>
+          <div>
+            <p>{game.spread_2}</p>
+          </div>
+        </div>
+
+        <div>
+          <p>Total</p>
+          <p>{game.total}</p>
+        </div>
+      </div>
+      <OpenModalButton
+        buttonText="Create Bet"
+        modalComponent={<CreateNewBet gameId={gameId} />}
+      ></OpenModalButton>
       <OpenModalButton
         buttonText="Update Game"
         modalComponent={<UpdateGame gameId={gameId} />}
