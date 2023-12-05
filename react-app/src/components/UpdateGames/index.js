@@ -11,13 +11,39 @@ export default function UpdateGame({ gameId }) {
   const { closeModal } = useModal();
   const teams = useSelector((state) => state.teams.allTeams);
   const teamObj = Object.values(teams);
+  const game = useSelector((state) => state.games.allGames[gameId]);
+  console.log("🚀 >>>>>>>>>> ~ gamessdfsdf:", game);
 
-  const [time, setTime] = useState("");
-  const [team1, setTeam1] = useState("");
-  const [team2, setTeam2] = useState("");
-  const [spread1, setSpread1] = useState("");
-  const [spread2, setSpread2] = useState("");
-  const [total, setTotal] = useState("");
+  // const [time, setTime] = useState("");
+  // const [team1, setTeam1] = useState("");
+  // const [team2, setTeam2] = useState("");
+  // const [spread1, setSpread1] = useState("");
+  // const [spread2, setSpread2] = useState("");
+  // const [total, setTotal] = useState("");
+
+  // // const [active, setActive] = useState(false);
+  // useEffect(() => {
+  //   dispatch(getAllTeamsThunk());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getGameThunk(gameId)).then((response) => {
+  //     setTime(response.time);
+  //     setTeam1(response.team_1_id);
+  //     setTeam2(response.team_2_id);
+  //     setSpread1(response.spread_1);
+  //     setSpread2(response.spread_2);
+  //     setTotal(response.total);
+  //     // setActive(response.active);
+  //   });
+  // }, [dispatch, gameId]);
+
+  const [time, setTime] = useState(game.time);
+  const [team1, setTeam1] = useState(game.team_1);
+  const [team2, setTeam2] = useState(game.team_2);
+  const [spread1, setSpread1] = useState(game.spread_1);
+  const [spread2, setSpread2] = useState(game.spread_2);
+  const [total, setTotal] = useState(game.total);
 
   // const [active, setActive] = useState(false);
   useEffect(() => {
@@ -25,15 +51,7 @@ export default function UpdateGame({ gameId }) {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getGameThunk(gameId)).then((response) => {
-      setTime(response.time);
-      setTeam1(response.team_1_id);
-      setTeam2(response.team_2_id);
-      setSpread1(response.spread_1);
-      setSpread2(response.spread_2);
-      setTotal(response.total);
-      // setActive(response.active);
-    });
+    dispatch(getGameThunk(gameId));
   }, [dispatch, gameId]);
 
   const handleSubmit = async (e) => {
@@ -48,9 +66,10 @@ export default function UpdateGame({ gameId }) {
     formData.append("total", total);
     // formData.append("active", active);
 
-    dispatch(updateGameThunk(formData, gameId));
+    await dispatch(updateGameThunk(formData, gameId)).then((res) => {
+      history.push(`/games/${gameId}`);
+    });
     closeModal();
-    history.push(`/games/${gameId}`);
   };
 
   return (

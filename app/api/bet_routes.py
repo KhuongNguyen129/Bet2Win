@@ -34,13 +34,14 @@ def create_bet():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        # form.under_input.data
         create_bet = Bet(
             spread_1_input = form.data["spread_1_input"],
             spread_2_input=form.data["spread_2_input"],
             under_input=form.data["under_input"],
             over_input=form.data["over_input"],
             outcome=form.data["outcome"],
-            game_id= form.data["game_id"],
+            game_id= form.game_id.data,
             user_id= current_user.id
         )
 

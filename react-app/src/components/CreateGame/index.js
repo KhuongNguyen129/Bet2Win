@@ -18,7 +18,6 @@ export default function CreateNewGame() {
   const [validationErrors, setValidationErrors] = useState({});
   const teams = useSelector((state) => state.teams.allTeams);
   const teamObj = Object.values(teams);
-  console.log("🚀 >>>>>>>>>> ~ teamObj:", teamObj);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
