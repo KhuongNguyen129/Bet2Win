@@ -14,8 +14,8 @@ class Bet(db.Model):
     over_input = db.Column(db.Integer)
     outcome = db.Column(db.String)
 
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), nullable=False)
 
     game = db.relationship("Game", back_populates="bet") 
 

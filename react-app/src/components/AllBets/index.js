@@ -28,12 +28,12 @@ export default function AllBets() {
                   <p>{bet.game.team_1.name}</p>
                   <p>{bet.game.spread_1}</p>
 
-                  <p>{bet.spread_1_input}$</p>
+                  <p>${bet.spread_1_input}</p>
 
                   <p>{bet.game.team_2.name}</p>
                   <p>{bet.game.spread_2}</p>
 
-                  <p>{bet.spread_2_input}$</p>
+                  <p>${bet.spread_2_input}</p>
 
                   <p>{bet.game.total}</p>
                   <p>{bet.game.under_input}</p>

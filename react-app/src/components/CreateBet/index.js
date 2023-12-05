@@ -2,23 +2,20 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createBetThunk } from "../../store/bets";
-import { getAllTeamsThunk } from "../../store/teams";
+import { useModal } from "../../context/Modal";
 
 export default function CreateNewBet({ gameId }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { closeModal } = useModal();
 
-  const [spread1Bet, setSpread1Bet] = useState("");
-  const [spread2Bet, setSpread2Bet] = useState("");
-  const [overBet, setOverBet] = useState("");
-  const [underBet, setUnderBet] = useState("");
+  const [spread1Bet, setSpread1Bet] = useState(0);
+  const [spread2Bet, setSpread2Bet] = useState(0);
+  const [overBet, setOverBet] = useState(0);
+  const [underBet, setUnderBet] = useState(0);
 
   const [validationErrors, setValidationErrors] = useState({});
   const game = useSelector((state) => state.games.allGames[gameId]);
-  console.log("🚀 >>>>>>>>>> ~ game from bet:", game);
-  const teams = useSelector((state) => state.teams.allTeams);
-  const teamObj = Object.values(teams);
-  console.log("🚀 >>>>>>>>>> ~ teamObj from bet:", teamObj);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,68 +25,94 @@ export default function CreateNewBet({ gameId }) {
     formData.append("spread_2_input", spread2Bet);
     formData.append("over_input", overBet);
     formData.append("under_input", underBet);
+    formData.append("game_id", game.id);
 
     await dispatch(createBetThunk(formData));
-
+    closeModal();
     history.push(`/bets`);
   };
-
-  useEffect(() => {
-    dispatch(getAllTeamsThunk());
-  }, [dispatch]);
 
   useEffect(() => {
     const errObj = {};
 
     if (!spread1Bet && !spread2Bet && !overBet && !underBet)
-      errObj.team1 = "At least 1 field is required";
+      errObj.message = "At least 1 field is required";
     setValidationErrors(errObj);
   }, [spread1Bet, spread2Bet, overBet, underBet]);
 
   return (
     <>
-      <h1>Update Your Bet</h1>
+      <h1>Create Your Bet</h1>
       <div>
         <form onSubmit={handleSubmit}>
-          <label>Spread for team 1</label>
           <div>
-            <input
-              type="number"
-              value={spread1Bet}
-              onChange={(e) => setSpread1Bet(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label>Spread for team 2</label>
             <div>
-              <input
-                type="number"
-                value={spread2Bet}
-                onChange={(e) => setSpread2Bet(e.target.value)}
-              />
+              <p>Time</p>
+              <p>{game.time}:00</p>
             </div>
-          </div>
-
-          <div>
-            <label>Under</label>
             <div>
-              <input
-                type="number"
-                value={underBet}
-                onChange={(e) => setUnderBet(e.target.value)}
-              />
-            </div>
-          </div>
+              <p>Teams</p>
+              <div>
+                <img
+                  src={game.team_1.logo}
+                  style={{ width: "60px", height: "50px" }}
+                />
+                <p>{game.team_1.name}</p>
+              </div>
+              <div>
+                <img
+                  src={game.team_2.logo}
+                  style={{ width: "60px", height: "50px" }}
+                />
+                <p>{game.team_2.name}</p>
+              </div>
+              <div>
+                <p>Spread</p>
+                <div>
+                  <p>{game.spread_1}</p>
+                  <input
+                    type="number"
+                    value={spread1Bet}
+                    onChange={(e) => setSpread1Bet(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div>
+                <p>{game.spread_2}</p>
+                <div>
+                  <input
+                    type="number"
+                    value={spread2Bet}
+                    onChange={(e) => setSpread2Bet(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <p>Total</p>
+                  <div>
+                    <div>
+                      <label>Under</label>
+                      <div>
+                        <input
+                          type="number"
+                          value={underBet}
+                          onChange={(e) => setUnderBet(e.target.value)}
+                        />
+                      </div>
+                    </div>
 
-          <div>
-            <label>Over</label>
-            <div>
-              <input
-                type="number"
-                value={overBet}
-                onChange={(e) => setOverBet(e.target.value)}
-              />
+                    <div>
+                      <label>Over</label>
+                      <div>
+                        <input
+                          type="number"
+                          value={overBet}
+                          onChange={(e) => setOverBet(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
