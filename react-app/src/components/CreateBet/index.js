@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createBetThunk } from "../../store/bets";
 import { useModal } from "../../context/Modal";
+import "../CreateBet/CreateBet.css";
 
 export default function CreateNewBet({ gameId }) {
   const dispatch = useDispatch();
@@ -42,81 +43,86 @@ export default function CreateNewBet({ gameId }) {
 
   return (
     <>
-      <h1>Create Your Bet</h1>
-      <div>
+      <h1 className="h1-create-game">Create a Bet</h1>
+      <div id="main-container">
         <form onSubmit={handleSubmit}>
-          <div>
-            <div>
-              <p>Time</p>
-              <p>{game.time}:00</p>
-            </div>
-            <div>
-              <p>Teams</p>
-              <div>
-                <img
-                  src={game.team_1.logo}
-                  style={{ width: "60px", height: "50px" }}
-                />
-                <p>{game.team_1.name}</p>
+          <div className="game-info-container">
+            <div className="first-container">
+              <div className="time-container">
+                <p className="time1">Time</p>
+                <p className="time">{game.time}:00</p>
               </div>
-              <div>
-                <img
-                  src={game.team_2.logo}
-                  style={{ width: "60px", height: "50px" }}
-                />
-                <p>{game.team_2.name}</p>
+              <div className="team-container">
+                <p>Teams</p>
+                <div className="team-1-container">
+                  <img
+                    src={game.team_1.logo}
+                    style={{ width: "80px", height: "60px" }}
+                  />
+                  <p>{game.team_1.name}</p>
+                </div>
+                <div className="team-2-container">
+                  <img
+                    src={game.team_2.logo}
+                    style={{ width: "80px", height: "60px" }}
+                  />
+                  <p>{game.team_2.name}</p>
+                </div>
               </div>
-              <div>
-                <p>Spread</p>
-                <div>
-                  <p>{game.spread_1}</p>
+
+              <div className="spread-container">
+                <p className="spread">Spread</p>
+
+                <p className="spread1">{game.spread_1}</p>
+
+                <p className="spread1">{game.spread_2}</p>
+              </div>
+              <div className="bet-money field1">
+                <p>Your Bets</p>
+                <div className="input1">
                   <input
                     type="number"
                     value={spread1Bet}
                     onChange={(e) => setSpread1Bet(e.target.value)}
                   />
                 </div>
-              </div>
-              <div>
-                <p>{game.spread_2}</p>
-                <div>
+                <div className="input2">
                   <input
                     type="number"
                     value={spread2Bet}
                     onChange={(e) => setSpread2Bet(e.target.value)}
                   />
                 </div>
-                <div>
-                  <p>Total</p>
-                  <div>
-                    <div>
-                      <label>Under</label>
-                      <div>
-                        <input
-                          type="number"
-                          value={underBet}
-                          onChange={(e) => setUnderBet(e.target.value)}
-                        />
-                      </div>
-                    </div>
+              </div>
+              <div className="total-info-box">
+                <p className="total">Total</p>
 
-                    <div>
-                      <label>Over</label>
-                      <div>
-                        <input
-                          type="number"
-                          value={overBet}
-                          onChange={(e) => setOverBet(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                <p className="total-bet">Under {game.total}</p>
+                <p className="total-bet">Over {game.total}</p>
+              </div>
+
+              <div className="bet-money">
+                <p>Your Bets</p>
+                <div className="input1">
+                  <input
+                    type="number"
+                    value={underBet}
+                    onChange={(e) => setUnderBet(e.target.value)}
+                  />
+                </div>
+                <div className="input2">
+                  <input
+                    type="number"
+                    value={overBet}
+                    onChange={(e) => setOverBet(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
           </div>
-
-          <button type="submit">Submit</button>
+          <div className="submit-create">
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </>
