@@ -1,16 +1,19 @@
 """empty message
 
-Revision ID: b81eb5ec902d
+Revision ID: 9df95eaa6080
 Revises: 
-Create Date: 2023-12-05 14:44:31.008650
+Create Date: 2023-12-06 07:56:37.154575
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'b81eb5ec902d'
+revision = '9df95eaa6080'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,6 +29,9 @@ def upgrade():
     sa.Column('state', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(), nullable=False),
@@ -38,6 +44,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('time', sa.Integer(), nullable=False),
@@ -52,6 +61,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['team_2_id'], ['teams.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
     op.create_table('bets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('spread_1_input', sa.Integer(), nullable=True),
@@ -65,6 +76,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE bets SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
