@@ -17,6 +17,7 @@ export default function UpdateBet({ betId }) {
   const [spread2Bet, setSpread2Bet] = useState(bet.spread_2_input || 0);
   const [overBet, setOverBet] = useState(bet.over_input || 0);
   const [underBet, setUnderBet] = useState(bet.under_input || 0);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(getAllBetsThunk());
@@ -28,6 +29,7 @@ export default function UpdateBet({ betId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (errors.message) return;
 
     const formData = new FormData();
     formData.append("spread_1_input", spread1Bet);
@@ -41,9 +43,19 @@ export default function UpdateBet({ betId }) {
     closeModal();
   };
 
+  useEffect(() => {
+    const errObj = {};
+
+    if (!spread1Bet && !spread2Bet && !overBet && !underBet)
+      errObj.message = "At least 1 field is required";
+    setErrors(errObj);
+  }, [spread1Bet, spread2Bet, overBet, underBet]);
   return (
     <>
       <h1>Update Your Bet</h1>
+      {errors.message && (
+        <p className="error create-bet-err">{errors.message}</p>
+      )}
       <div>
         <form onSubmit={handleSubmit}>
           <label>Spread for team 1</label>

@@ -47,3 +47,9 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+
+.all-games-time {
+    width: 50px;
+    text-align: center;
+}
