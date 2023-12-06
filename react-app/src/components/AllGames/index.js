@@ -33,7 +33,7 @@ export default function AllGames() {
                   </div>
                   <p>{game.team_1.initial}</p>
                 </div>
-                <p>time</p>
+                <p className="all-games-time">{game.time}:00 PST</p>
                 <div className="team2">
                   <div className="team-logo">
                     <img

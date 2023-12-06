@@ -20,6 +20,9 @@ export default function CreateNewBet({ gameId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (validationErrors.message) {
+      return;
+    }
 
     const formData = new FormData();
     formData.append("spread_1_input", spread1Bet);
@@ -44,6 +47,9 @@ export default function CreateNewBet({ gameId }) {
   return (
     <>
       <h1 className="h1-create-game">Create a Bet</h1>
+      {validationErrors.message && (
+        <p className="error create-bet-err">{validationErrors.message}</p>
+      )}
       <div id="main-container">
         <form onSubmit={handleSubmit}>
           <div className="game-info-container">

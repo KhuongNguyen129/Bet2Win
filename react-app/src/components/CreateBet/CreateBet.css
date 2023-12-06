@@ -49,3 +49,7 @@
 .field1 {
     border-right: 1px solid black;
 }
+
+.create-bet-err {
+    padding: 0px;
+}
