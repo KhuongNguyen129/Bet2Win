@@ -86,6 +86,7 @@ export default function CreateNewGame() {
           <div className="info-box create">
             <p>Team1: </p>
             <select value={team1.id} onChange={(e) => setTeam1(e.target.value)}>
+              <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
                   {team.name}
@@ -100,6 +101,7 @@ export default function CreateNewGame() {
           <div className="info-box create">
             <p>Team2: </p>
             <select value={team2.id} onChange={(e) => setTeam2(e.target.value)}>
+              <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
                   {team.name}
