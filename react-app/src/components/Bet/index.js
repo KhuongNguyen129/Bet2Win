@@ -7,12 +7,13 @@ import { getBetThunk } from "../../store/bets";
 import UpdateBet from "../UpdateBets";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBet from "../DeleteBet";
+import "../Bet/Bet.css";
 
 export default function Bet() {
   const { betId } = useParams();
   const dispatch = useDispatch();
   // const history = useHistory();
-  // const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   const bet = useSelector((state) => state.bets.allBets[betId]);
 
   //   const userId = sessionUser?.id;
@@ -31,29 +32,68 @@ export default function Bet() {
 
   return (
     <>
-      <div>
-        <p>{bet.game.team_1.name}</p>
-        <p>{bet.game.spread_1}</p>
+      <div id="main-container">
+        <div className="game-info-container">
+          <div className="first-container">
+            <div className="time-container">
+              <p className="time1">Time</p>
+              <p className="time">{bet.game.time}:00</p>
+            </div>
+            <div className="team-container">
+              <p>Teams</p>
+              <div className="team-1-container">
+                <img
+                  src={bet.game.team_1.logo}
+                  style={{ width: "80px", height: "60px" }}
+                />
+                <p>{bet.game.team_1.name}</p>
+              </div>
+              <div className="team-2-container">
+                <img
+                  src={bet.game.team_2.logo}
+                  style={{ width: "80px", height: "60px" }}
+                />
+                <p>{bet.game.team_2.name}</p>
+              </div>
+            </div>
 
-        <p>{bet.spread_1_input}$</p>
+            <div className="spread-container">
+              <p className="spread">Spread</p>
 
-        <p>{bet.game.team_2.name}</p>
-        <p>{bet.game.spread_2}</p>
+              <p className="spread1">{bet.game.spread_1}</p>
 
-        <p>{bet.spread_2_input}$</p>
+              <p className="spread1">{bet.game.spread_2}</p>
+            </div>
+            <div className="bet-money field1">
+              <p>Your Bets</p>
+              <p className="input1">$ {bet.spread_1_input}</p>
+              <p className="input2">$ {bet.spread_1_input}</p>
+            </div>
+            <div className="total-info-box">
+              <p className="total">Total</p>
 
-        <p>{bet.game.total}</p>
-        <p>{bet.game.under_input}</p>
-        <p>{bet.game.over_input}</p>
+              <p className="total-bet">Under {bet.game.total}</p>
+              <p className="total-bet">Over {bet.game.total}</p>
+            </div>
+
+            <div className="bet-money">
+              <p>Your Bets</p>
+              <p className="input1">$ {bet.under_input}</p>
+              <p className="input2">$ {bet.over_input}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <OpenModalButton
-        buttonText="Update Bet"
-        modalComponent={<UpdateBet betId={betId} />}
-      ></OpenModalButton>
-      <OpenModalButton
-        buttonText="Delete Bet"
-        modalComponent={<DeleteBet betId={betId} />}
-      ></OpenModalButton>
+      <div className="update-delete-bet-button">
+        <OpenModalButton
+          buttonText="Update Bet"
+          modalComponent={<UpdateBet betId={betId} />}
+        ></OpenModalButton>
+        <OpenModalButton
+          buttonText="Delete Bet"
+          modalComponent={<DeleteBet betId={betId} />}
+        ></OpenModalButton>
+      </div>
     </>
   );
 }

@@ -1,27 +1,27 @@
-#modal-content {
-    border-radius: 10px;
-    
-}
-
-.h1-update-game {
+.h1-create-game {
     text-align: center;
 }
 
-.update-game-form-container {
+.create-game-form-container {
     padding: 10px 15px;
+    display: flex;
+    justify-content: center;
 }
 
 
-.update-game-form > div > p{
-    width: 15%;
+.create-game-form > div > p{
+    width: 80px;
     margin: 0px;
 }
-.update-game-form > div > input, .update-game-form > div > select{
-    width: 500px;
+.create-game-form > div > input{
+    width: 400px;
     border-radius: 4px;
 }
-
-.update-game-form > .info-box {
+.create-game-form > div > select {
+    width: 406px;
+    border-radius: 4px;
+}
+.create-game-form > .info-box {
     display: flex;
     align-items: center;
 }
@@ -36,9 +36,11 @@
     color: red
 }
 
-.submit-update {
+.submit-create {
     display: flex;
     justify-content: center;
     padding: 5px 15px;
     border-radius: 4px;
 }
+
+
