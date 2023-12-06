@@ -1,0 +1,43 @@
+#modal-content {
+    border-radius: 10px;
+}
+
+.h1-update-game {
+    text-align: center;
+}
+
+.update-game-form-container {
+    padding: 10px 15px;
+}
+
+
+.update-game-form > div > p{
+    width: 15%;
+    margin: 0px;
+}
+.update-game-form > div > input, .update-game-form > div > select{
+    width: 500px;
+    border-radius: 4px;
+}
+
+.update-game-form > .info-box {
+    display: flex;
+    align-items: center;
+}
+
+.info-box {
+    margin: 10px;
+}
+
+.error {
+    margin: 0px;
+    padding: 0px 90px;
+    color: red
+}
+
+.submit-update {
+    display: flex;
+    justify-content: center;
+    padding: 5px 15px;
+    border-radius: 4px;
+}

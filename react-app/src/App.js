@@ -13,6 +13,7 @@ import UpdateGame from "./components/UpdateGames";
 import AllBets from "./components/AllBets";
 import Bet from "./components/Bet";
 import CreateNewBet from "./components/CreateBet";
+import UpdateBet from "./components/UpdateBets";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,9 @@ function App() {
           </Route>
           <Route path="/bets/:betId">
             <Bet />
+          </Route>
+          <Route path="/bets/:betId/update">
+            <UpdateBet />
           </Route>
           <Route path="/login">
             <LoginFormPage />

@@ -19,11 +19,6 @@ function Navigation({ isLoaded }) {
             />
           </NavLink>
         </div>
-        <div>
-          <NavLink exact to="/games/new">
-            Create a New Game
-          </NavLink>
-        </div>
 
         <div className="sign-button">
           {isLoaded && (

@@ -8,7 +8,8 @@ export default function AllGames() {
   const games = useSelector((state) => state.games.allGames);
   const allGames = Object.values(games);
   console.log("🚀 >>>>>>>>>> ~ allGames:", allGames);
-  // const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
+  console.log("🚀 >>>>>>>>>> ~ sessionUser:", sessionUser);
   console.log("🚀 >>>>>>>>>> ~ games:", games);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function AllGames() {
                   <div className="team-logo">
                     <img
                       src={game.team_1.logo}
-                      style={{ width: "120px", height: "90px" }}
+                      style={{ width: "70px", height: "50px" }}
                     />
                   </div>
                   <p>{game.team_1.initial}</p>
@@ -37,7 +38,7 @@ export default function AllGames() {
                   <div className="team-logo">
                     <img
                       src={game.team_2.logo}
-                      style={{ width: "120px", height: "90px" }}
+                      style={{ width: "70px", height: "50px" }}
                     />
                   </div>
                   <p>{game.team_2.initial}</p>
