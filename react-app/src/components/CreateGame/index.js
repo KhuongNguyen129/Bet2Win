@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createGameThunk } from "../../store/games";
 import { getAllTeamsThunk } from "../../store/teams";
 import "../CreateGame/CreateGame.css";
-import { DOUBLE } from "sequelize";
+// import { DOUBLE } from "sequelize";
 
 export default function CreateNewGame() {
   const dispatch = useDispatch();

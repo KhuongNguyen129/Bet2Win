@@ -22,7 +22,7 @@ export default function UpdateGame({ gameId }) {
   const [spread2, setSpread2] = useState(game.spread_2);
   const [total, setTotal] = useState(game.total);
   const [errors, setErrors] = useState({});
-  console.log("***** On render team1: ", team1);
+
   // const [active, setActive] = useState(false);
 
   useEffect(() => {
