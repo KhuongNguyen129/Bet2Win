@@ -67,7 +67,7 @@ export default function Bet() {
             <div className="bet-money field1">
               <p>Your Bets</p>
               <p className="input1">$ {bet.spread_1_input}</p>
-              <p className="input2">$ {bet.spread_1_input}</p>
+              <p className="input2">$ {bet.spread_2_input}</p>
             </div>
             <div className="total-info-box">
               <p className="total">Total</p>

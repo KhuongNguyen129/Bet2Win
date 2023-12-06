@@ -7,7 +7,7 @@ import { getAllBetsThunk } from "../../store/bets";
 import { updateBetThunk } from "../../store/bets";
 import { useSelector } from "react-redux";
 export default function UpdateBet({ betId }) {
-  console.log("🚀 >>>>>>>>>> ~ betId from:", betId);
+  // console.log("🚀 >>>>>>>>>> ~ betId from:", betId);
   const bet = useSelector((state) => state.bets.allBets[betId]);
   const dispatch = useDispatch();
   const history = useHistory();
