@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { deleteGameThunk } from "../../store/games";
+import "../DeleteGame/DeleteGame.css";
 
 export default function DeleteButton({ gameId }) {
   const { closeModal } = useModal();
@@ -23,7 +24,7 @@ export default function DeleteButton({ gameId }) {
 
   return (
     <>
-      <div>
+      <div classname="delete-button">
         <h2>Confirm Delete</h2>
         <h3>Are you sure you want to remove this game?</h3>
         <button onClick={handleSubmit}>Yes (Delete Game)</button>
