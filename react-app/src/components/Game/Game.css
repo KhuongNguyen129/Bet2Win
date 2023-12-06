@@ -1,0 +1,71 @@
+
+
+.team-1-container, .team-2-container, .spread1, .spread2, .over, .under {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px 15px;
+}
+
+.time1, .team-container > p, .spread, .total {
+    margin: 0px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    
+    border-bottom: 1px solid black;
+}
+
+.time-container, .team-container, .spread-container {
+    border-right: 1px solid black;
+}
+
+.time-container, .spread-container {
+    width: 65px;
+}
+
+#main-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.first-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: fit-content;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px grey;
+
+}
+
+/* .time-container {
+    padding: 0px 15px;
+} */
+
+.time  {
+    height: 140px;
+    display: flex;
+    align-items: center;
+
+}
+
+.team-container > p, .spread, .total, .time1, .time {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    gap: 4px
+}
+.button-bet:hover, .button-delete-game:hover, .button-update-game:hover {
+    border: 1px solid rgb(110, 108, 108);
+    box-shadow: 4px 4px 8px grey;
+
+}
+

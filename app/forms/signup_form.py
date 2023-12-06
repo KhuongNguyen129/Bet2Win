@@ -24,11 +24,11 @@ def contains_at_symbol(form, field):
         raise ValidationError('Invalid email.')
 
 class SignUpForm(FlaskForm):
-    first_name = StringField("First name", validators=[DataRequired()])
-    last_name = StringField("Last Name", validators=[DataRequired()])
+    first_name = StringField("First_name", validators=[DataRequired()])
+    last_name = StringField("Last_Name", validators=[DataRequired()])
     username = StringField('username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists, contains_at_symbol])
     password = PasswordField('password', validators=[DataRequired(),  Length(min=6, message='Password must be at least 6 characters long')])
-    state = StringField('State', validators=[DataRequired()])
-    phone_number = StringField('Phone Number', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired(), Length(2 ,message="State must be 2 characters")])
+    phone_number = StringField('Phone_Number', validators=[DataRequired(), Length(min=10,max=10, message="Phone Number must be 10 characters")])
 

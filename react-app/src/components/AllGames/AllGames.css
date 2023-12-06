@@ -1,17 +1,18 @@
 .all-games {
-    display: grid;
-    grid-template-columns: 500px 500px 500px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 40px 100px;
-    gap: 20px
+    gap: 15px
 }
 
 .game {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 300px
+    height: 200px;
+    padding: 0px 10px
+    
     
 }
 
@@ -20,7 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 15px;
 }
 
 .team1 > p, .team2 > p {

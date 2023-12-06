@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String, nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    phone_number = db.Column(db.String, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     game = db.relationship("Game", back_populates="user", cascade='all, delete')
@@ -35,5 +36,6 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'username': self.username,
+            'phone_number': self.phone_number,
             'email': self.email
         }

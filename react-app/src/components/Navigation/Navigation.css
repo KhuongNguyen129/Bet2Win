@@ -1,19 +1,53 @@
 .profile-dropdown {
   position: absolute;
+  top: 8%;
+  right: 4.5%;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 10px;
+  z-index: 1;
+  text-decoration: none;
+  width: fit-content;
+  background-color: #efebebd8;
+  border-radius: 8px;
+  box-shadow: 0 0 18px #00000026;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
 }
+
+.profile-dropdown-button {
+  border-color: #e9dede;
+  border-radius: 3px;
+}
+
+.profile-dropdown-button:hover {
+  box-shadow: 2px 2px 4px black;
+}
+
 
 .hidden {
   display: none;
 }
 
+.top-right-button {
+  border: 1px solid grey;
+  background-color: #efebebbb;
+  border-color: aliceblue;
+  box-shadow: 1px 1px 2px rgb(115, 111, 111);
+  border-radius: 10px;
+  padding: 4px 20px;
+}
+
 #top-bar {
   display: flex;
   justify-content: space-between;
-  margin: 0px 30px;
-
+  align-items: center;
+  margin: 10px 40px;
 }
 
 #big2win-logo {
   width: 100px;
-  height: 100px;
+  height: 80px;
 }

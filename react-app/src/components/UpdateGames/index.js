@@ -4,39 +4,16 @@ import { useHistory } from "react-router-dom";
 import { updateGameThunk, getGameThunk } from "../../store/games";
 import { useModal } from "../../context/Modal";
 import { getAllTeamsThunk } from "../../store/teams";
+import "../UpdateGames/UpdateGames.css";
 
 export default function UpdateGame({ gameId }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { closeModal } = useModal();
   const teams = useSelector((state) => state.teams.allTeams);
   const teamObj = Object.values(teams);
   const game = useSelector((state) => state.games.allGames[gameId]);
+  const { closeModal } = useModal();
   console.log("🚀 >>>>>>>>>> ~ gamessdfsdf:", game);
-
-  // const [time, setTime] = useState("");
-  // const [team1, setTeam1] = useState("");
-  // const [team2, setTeam2] = useState("");
-  // const [spread1, setSpread1] = useState("");
-  // const [spread2, setSpread2] = useState("");
-  // const [total, setTotal] = useState("");
-
-  // // const [active, setActive] = useState(false);
-  // useEffect(() => {
-  //   dispatch(getAllTeamsThunk());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(getGameThunk(gameId)).then((response) => {
-  //     setTime(response.time);
-  //     setTeam1(response.team_1_id);
-  //     setTeam2(response.team_2_id);
-  //     setSpread1(response.spread_1);
-  //     setSpread2(response.spread_2);
-  //     setTotal(response.total);
-  //     // setActive(response.active);
-  //   });
-  // }, [dispatch, gameId]);
 
   const [time, setTime] = useState(game.time);
   const [team1, setTeam1] = useState(game.team_1);
@@ -44,8 +21,21 @@ export default function UpdateGame({ gameId }) {
   const [spread1, setSpread1] = useState(game.spread_1);
   const [spread2, setSpread2] = useState(game.spread_2);
   const [total, setTotal] = useState(game.total);
-
+  const [errors, setErrors] = useState({});
   // const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    let errorsObj = {};
+    if (!time) errorsObj.time = "Time is required";
+    if (!team1) errorsObj.team1 = "Team 1 is required";
+    if (!team2) errorsObj.team2 = "Team 2 is required";
+    if (!spread1) errorsObj.spread1 = "Spread 1 is required";
+    if (!spread2) errorsObj.spread2 = "Spread 2 is required";
+    if (!total) errorsObj.total = "Total is required";
+
+    setErrors(errorsObj);
+  }, [time, team1, team2, spread1, spread2]);
+
   useEffect(() => {
     dispatch(getAllTeamsThunk());
   }, [dispatch]);
@@ -53,6 +43,15 @@ export default function UpdateGame({ gameId }) {
   useEffect(() => {
     dispatch(getGameThunk(gameId));
   }, [dispatch, gameId]);
+
+  useEffect(() => {
+    setTime(game.time || "");
+    setTeam1(game.team_1 || "");
+    setTeam2(game.team_2 || "");
+    setSpread1(game.spread_1 || "");
+    setSpread2(game.spread_2 || "");
+    setTotal(game.total || "");
+  }, [game]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,20 +64,21 @@ export default function UpdateGame({ gameId }) {
     formData.append("spread_2", spread2);
     formData.append("total", total);
     // formData.append("active", active);
+    await dispatch(updateGameThunk(formData, gameId));
 
-    await dispatch(updateGameThunk(formData, gameId)).then((res) => {
-      history.push(`/games/${gameId}`);
-    });
-    closeModal();
+    history.push(`/games/${gameId}`);
+    if (Object.entries(errors).length === 0) {
+      closeModal();
+    }
   };
 
   return (
     <>
-      <h1>Update Your Game</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>Time</label>
-          <div>
+      <h1 className="h1-update-game">Update Your Game</h1>
+      <div className="update-game-form-container">
+        <form className="update-game-form" onSubmit={handleSubmit}>
+          <div className="info-box">
+            <p>Time: </p>
             <input
               type="number"
               placeholder="Time"
@@ -86,9 +86,10 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
+          {errors.time && <p className="error">{errors.time}</p>}
 
-          <div>
-            <label>Team 1</label>
+          <div className="info-box">
+            <p>Team1: </p>
             <select value={team1} onChange={(e) => setTeam1(e.target.value)}>
               <option value="">Select Team</option>
               {teamObj.map((team) => (
@@ -97,10 +98,11 @@ export default function UpdateGame({ gameId }) {
                 </option>
               ))}
             </select>
+            {errors.team1 && <p className="error">{errors.time1}</p>}
           </div>
 
-          <div>
-            <label>Team 2</label>
+          <div className="info-box">
+            <p>Team2: </p>
             <select value={team2} onChange={(e) => setTeam2(e.target.value)}>
               <option value="">Select Team</option>
               {teamObj.map((team) => (
@@ -111,33 +113,40 @@ export default function UpdateGame({ gameId }) {
             </select>
           </div>
 
-          <div>
-            <label>spread1</label>
+          <div className="info-box">
+            <p>Spread1: </p>
             <input
               type="number"
               value={spread1}
               onChange={(e) => setSpread1(e.target.value)}
             />
           </div>
+          {errors.spread1 && <p className="error">{errors.spread1}</p>}
 
-          <div>
-            <label>spread2</label>
+          <div className="info-box">
+            <p>Spread2: </p>
             <input
               type="number"
               value={spread2}
               onChange={(e) => setSpread2(e.target.value)}
             />
           </div>
+          {errors.spread2 && <p className="error">{errors.spread2}</p>}
 
-          <div>
-            <label>total</label>
+          <div className="info-box">
+            <p>Total: </p>
             <input
               type="number"
               value={total}
               onChange={(e) => setTotal(e.target.value)}
             />
           </div>
-          <button type="submit">Submit</button>
+          {errors.total && <p className="error">{errors.total}</p>}
+          <div className="submit-update">
+            <button className="submit-update" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
