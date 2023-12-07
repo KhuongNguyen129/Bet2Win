@@ -86,9 +86,6 @@ function SignupFormModal() {
               value={first_name}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            {errors.first_name && (
-              <p className="error-message">{errors.first_name}</p>
-            )}
           </div>
           <div className="form-chunk">
             <div className="err">

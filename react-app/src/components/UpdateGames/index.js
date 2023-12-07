@@ -136,7 +136,7 @@ export default function UpdateGame({ gameId }) {
             <input
               type="number"
               value={total}
-              onChange={(e) => setTotal(e.target.value)}
+              onChange={(e) => setTotal(Math.max(0, e.target.value))}
             />
           </div>
           {submit && errors.total && <p className="error">{errors.total}</p>}

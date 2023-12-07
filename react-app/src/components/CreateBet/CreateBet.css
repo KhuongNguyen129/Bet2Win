@@ -14,6 +14,7 @@
 
 .bet-money > p {
     margin: 0px;
+
 }
 
 .total-bet {
@@ -52,4 +53,13 @@
 
 .create-bet-err {
     padding: 0px;
+}
+
+.bet-money, .total-info-box {
+    width: 85px;
+}
+
+.bet-money > p {
+    display: flex;
+    justify-content: center;
 }

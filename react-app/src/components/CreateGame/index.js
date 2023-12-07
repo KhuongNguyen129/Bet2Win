@@ -78,9 +78,7 @@ export default function CreateNewGame() {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          {submit && validationErrors.time && (
-            <p className="error">{validationErrors.time}</p>
-          )}
+          <p className="error">{submit && validationErrors.time}</p>
 
           <div className="info-box create">
             <p>Team1: </p>
@@ -93,9 +91,8 @@ export default function CreateNewGame() {
               ))}
             </select>
           </div>
-          {submit && validationErrors.team1 && (
-            <p className="error">{validationErrors.time1}</p>
-          )}
+
+          <p className="error">{submit && validationErrors.time1}</p>
 
           <div className="info-box create">
             <p>Team2: </p>
@@ -138,7 +135,7 @@ export default function CreateNewGame() {
             <input
               type="number"
               value={total}
-              onChange={(e) => setTotal(e.target.value)}
+              onChange={(e) => setTotal(Math.max(0, e.target.value))}
             />
           </div>
           {submit && validationErrors.total && (
