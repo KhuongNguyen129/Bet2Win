@@ -15,8 +15,8 @@ export default function CreateNewGame() {
   const [team2, setTeam2] = useState("");
   const [spread1, setSpread1] = useState("");
   const [spread2, setSpread2] = useState("");
-  // const [double, setDbouble] = useState("");
   const [total, setTotal] = useState("");
+  const [submit, setSubmit] = useState(false);
   // const [active, setActive] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const teams = useSelector((state) => state.teams.allTeams);
@@ -39,6 +39,7 @@ export default function CreateNewGame() {
     if (Object.keys(validationErrors).length === 0) {
       history.push(`/games`);
     }
+    setSubmit(true);
   };
 
   useEffect(() => {
@@ -54,16 +55,14 @@ export default function CreateNewGame() {
     }
     if (!team1) errObj.team1 = "Team1 is required";
     if (!team2) errObj.team2 = "Team2 is required";
-    // if (team1 === team2)
-    //   errObj[double] = "Team1 and team2 cant not be the same";
     if (!spread1) errObj.spread1 = "Spread1 is required";
     if (!spread2) errObj.spread2 = "Spread2 is required";
     if (!total) errObj.total = "Total is required";
+    // if (team1.id === team2.id)
+    //   errObj.message = "Team 1 and team 2 can not be the same";
     // if (!active) errObj.active = "Active is required";
     setValidationErrors(errObj);
   }, [time, team1, team2, spread1, spread2, total]);
-
-  console.log("🚀 >>>>>>>>>> ~ validationErrors:", validationErrors);
 
   return (
     <>
@@ -79,7 +78,7 @@ export default function CreateNewGame() {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          {validationErrors.time && (
+          {submit && validationErrors.time && (
             <p className="error">{validationErrors.time}</p>
           )}
 
@@ -94,7 +93,7 @@ export default function CreateNewGame() {
               ))}
             </select>
           </div>
-          {validationErrors.team1 && (
+          {submit && validationErrors.team1 && (
             <p className="error">{validationErrors.time1}</p>
           )}
 
@@ -118,7 +117,7 @@ export default function CreateNewGame() {
               onChange={(e) => setSpread1(e.target.value)}
             />
           </div>
-          {validationErrors.spread1 && (
+          {submit && validationErrors.spread1 && (
             <p className="error">{validationErrors.spread1}</p>
           )}
 
@@ -130,7 +129,7 @@ export default function CreateNewGame() {
               onChange={(e) => setSpread2(e.target.value)}
             />
           </div>
-          {validationErrors.spread2 && (
+          {submit && validationErrors.spread2 && (
             <p className="error">{validationErrors.spread2}</p>
           )}
 
@@ -142,7 +141,7 @@ export default function CreateNewGame() {
               onChange={(e) => setTotal(e.target.value)}
             />
           </div>
-          {validationErrors.total && (
+          {submit && validationErrors.total && (
             <p className="error">{validationErrors.total}</p>
           )}
           <div className="submit-create">

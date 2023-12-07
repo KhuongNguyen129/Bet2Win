@@ -7,10 +7,9 @@ import { getAllBetsThunk } from "../../store/bets";
 import { updateBetThunk } from "../../store/bets";
 import { useSelector } from "react-redux";
 export default function UpdateBet({ betId }) {
-  // console.log("🚀 >>>>>>>>>> ~ betId from:", betId);
   const bet = useSelector((state) => state.bets.allBets[betId]);
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const { closeModal } = useModal();
 
   const [spread1Bet, setSpread1Bet] = useState(bet.spread_1_input || 0);
@@ -18,6 +17,7 @@ export default function UpdateBet({ betId }) {
   const [overBet, setOverBet] = useState(bet.over_input || 0);
   const [underBet, setUnderBet] = useState(bet.under_input || 0);
   const [errors, setErrors] = useState({});
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     dispatch(getAllBetsThunk());
@@ -26,6 +26,15 @@ export default function UpdateBet({ betId }) {
   useEffect(() => {
     dispatch(getGameThunk(betId));
   }, [dispatch, betId]);
+
+  useEffect(() => {
+    const errObj = {};
+
+    if (!spread1Bet && !spread2Bet && !overBet && !underBet)
+      errObj.message = "At least 1 field is required";
+
+    setErrors(errObj);
+  }, [spread1Bet, spread2Bet, overBet, underBet]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,25 +46,20 @@ export default function UpdateBet({ betId }) {
     formData.append("over_input", overBet);
     formData.append("under_input", underBet);
 
-    dispatch(updateBetThunk(formData, betId)).then((res) => {
-      history.push(`/bets/${betId}`);
-    });
-    closeModal();
+    await dispatch(updateBetThunk(formData, betId));
+    if (Object.entries(errors).length === 0) {
+      closeModal();
+    }
+    setSubmit(true);
   };
 
-  useEffect(() => {
-    const errObj = {};
-
-    if (!spread1Bet && !spread2Bet && !overBet && !underBet)
-      errObj.message = "At least 1 field is required";
-    setErrors(errObj);
-  }, [spread1Bet, spread2Bet, overBet, underBet]);
   return (
     <>
       <h1>Update Your Bet</h1>
-      {errors.message && (
+      {submit && errors.message && (
         <p className="error create-bet-err">{errors.message}</p>
       )}
+
       <div>
         <form onSubmit={handleSubmit}>
           <label>Spread for team 1</label>
@@ -63,7 +67,7 @@ export default function UpdateBet({ betId }) {
             <input
               type="number"
               value={spread1Bet}
-              onChange={(e) => setSpread1Bet(e.target.value)}
+              onChange={(e) => setSpread1Bet(Math.max(0, e.target.value))}
             />
           </div>
 
@@ -73,7 +77,7 @@ export default function UpdateBet({ betId }) {
               <input
                 type="number"
                 value={spread2Bet}
-                onChange={(e) => setSpread2Bet(e.target.value)}
+                onChange={(e) => setSpread2Bet(Math.max(0, e.target.value))}
               />
             </div>
           </div>
@@ -84,7 +88,7 @@ export default function UpdateBet({ betId }) {
               <input
                 type="number"
                 value={underBet}
-                onChange={(e) => setUnderBet(e.target.value)}
+                onChange={(e) => setUnderBet(Math.max(0, e.target.value))}
               />
             </div>
           </div>
@@ -95,7 +99,7 @@ export default function UpdateBet({ betId }) {
               <input
                 type="number"
                 value={overBet}
-                onChange={(e) => setOverBet(e.target.value)}
+                onChange={(e) => setOverBet(Math.max(0, e.target.value))}
               />
             </div>
           </div>

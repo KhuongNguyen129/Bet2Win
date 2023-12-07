@@ -22,6 +22,7 @@ export default function UpdateGame({ gameId }) {
   const [spread2, setSpread2] = useState(game.spread_2);
   const [total, setTotal] = useState(game.total);
   const [errors, setErrors] = useState({});
+  const [submit, setSubmit] = useState(false);
 
   // const [active, setActive] = useState(false);
 
@@ -67,6 +68,7 @@ export default function UpdateGame({ gameId }) {
     if (Object.entries(errors).length === 0) {
       closeModal();
     }
+    setSubmit(true);
   };
 
   return (
@@ -83,7 +85,7 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          {errors.time && <p className="error">{errors.time}</p>}
+          {submit && errors.time && <p className="error">{errors.time}</p>}
 
           <div className="info-box">
             <p>Team1: </p>
@@ -125,7 +127,9 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setSpread2(e.target.value)}
             />
           </div>
-          {errors.spread2 && <p className="error">{errors.spread2}</p>}
+          {submit && errors.spread2 && (
+            <p className="error">{errors.spread2}</p>
+          )}
 
           <div className="info-box">
             <p>Total: </p>
@@ -135,7 +139,7 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setTotal(e.target.value)}
             />
           </div>
-          {errors.total && <p className="error">{errors.total}</p>}
+          {submit && errors.total && <p className="error">{errors.total}</p>}
           <div className="submit-update">
             <button className="submit-update" type="submit">
               Submit
