@@ -60,14 +60,14 @@ export default function CreateNewBet({ gameId }) {
               </div>
               <div className="team-container">
                 <p>Teams</p>
-                <div className="team-1-container">
+                <div className="team-1-container-all-game">
                   <img
                     src={game.team_1.logo}
                     style={{ width: "80px", height: "60px" }}
                   />
                   <p>{game.team_1.name}</p>
                 </div>
-                <div className="team-2-container">
+                <div className="team-2-container-all-game">
                   <img
                     src={game.team_2.logo}
                     style={{ width: "80px", height: "60px" }}
@@ -79,9 +79,9 @@ export default function CreateNewBet({ gameId }) {
               <div className="spread-container">
                 <p className="spread">Spread</p>
 
-                <p className="spread1">{game.spread_1}</p>
+                <p className="spread1-all-games">{game.spread_1}</p>
 
-                <p className="spread1">{game.spread_2}</p>
+                <p className="spread2-all-games">{game.spread_2}</p>
               </div>
               <div className="bet-money field1">
                 <p>Your Bets</p>

@@ -25,7 +25,7 @@ export default function AllBets() {
           display: "flex",
           flexWrap: "wrap",
           gap: "10px",
-          margin: "50px 100px",
+          margin: "0px 100px",
         }}
       >
         {allBets &&
@@ -33,7 +33,7 @@ export default function AllBets() {
             <div>
               <NavLink key={bet.id} to={`/bets/${bet.id}`}>
                 <div id="main-container">
-                  <div className="game-info-container">
+                  <div className="bet-info-container">
                     <div className="first-container">
                       <div className="time-container">
                         <p className="time1">Time</p>
@@ -41,10 +41,10 @@ export default function AllBets() {
                       </div>
                       <div className="team-container set-width">
                         <p>Teams</p>
-                        <div className="team-1-container">
+                        <div className="team-1-container-all-game">
                           <p>{bet.game.team_1.name}</p>
                         </div>
-                        <div className="team-2-container">
+                        <div className="team-2-container-all-game">
                           <p>{bet.game.team_2.name}</p>
                         </div>
                       </div>
@@ -52,9 +52,9 @@ export default function AllBets() {
                       <div className="spread-container">
                         <p className="spread">Spread</p>
 
-                        <p className="spread1">{bet.game.spread_1}</p>
+                        <p className="spread1-all-games">{bet.game.spread_1}</p>
 
-                        <p className="spread1">{bet.game.spread_2}</p>
+                        <p className="spread2-all-games">{bet.game.spread_2}</p>
                       </div>
                       <div className="bet-money field1">
                         <p>Your Bets</p>

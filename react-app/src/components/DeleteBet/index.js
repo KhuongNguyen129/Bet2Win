@@ -23,11 +23,17 @@ export default function DeleteBet({ betId }) {
 
   return (
     <>
-      <div>
+      <div id="delete-container">
         <h2>Confirm Delete</h2>
-        <h3>Are you sure you want to remove this bet?</h3>
-        <button onClick={handleSubmit}>Yes (Delete Bet)</button>
-        <button onClick={closeTheModel}>No (Keep Bet)</button>
+        <h3>
+          Are you sure you want to remove this bet? <p>YOU MIGHT WIN!!!</p>
+        </h3>
+        <button id="delete-button" onClick={handleSubmit}>
+          Yes (Delete Bet)
+        </button>
+        <button id="keep-button" onClick={closeTheModel}>
+          No (Keep Bet)
+        </button>
       </div>
     </>
   );

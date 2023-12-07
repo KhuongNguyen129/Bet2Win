@@ -39,8 +39,12 @@
 .submit-create {
     display: flex;
     justify-content: center;
-    padding: 5px 15px;
     border-radius: 4px;
+    margin-bottom: 10px;
 }
 
+.submit-create > button {
+    border-radius: 4px;
+    padding: 5px 15px;
+}
 

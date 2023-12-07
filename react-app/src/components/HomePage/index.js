@@ -7,7 +7,7 @@ const Homepage = () => {
     <div className="homepage-container">
       <div className="redirect-link">
         <NavLink exact to="/games">
-          NFL
+          READY TO CASH OUT!!!
         </NavLink>
       </div>
     </div>
