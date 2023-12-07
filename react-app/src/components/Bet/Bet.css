@@ -28,3 +28,22 @@
     width: 170px;
 }
 
+.redirect-button {
+    display: flex;
+    justify-content: center;
+}
+
+.all-button {
+    padding: 10px;
+    background-color: #893200;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.all-button:hover {
+    border: none;
+    background-color: #43C174;
+}
+
+

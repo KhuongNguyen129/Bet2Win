@@ -20,7 +20,14 @@ export default function AllBets() {
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          margin: "50px 100px",
+        }}
+      >
         {allBets &&
           allBets.map((bet) => (
             <div>

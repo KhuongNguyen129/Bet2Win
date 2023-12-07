@@ -14,8 +14,9 @@ function Navigation({ isLoaded }) {
           <NavLink to="/games">
             <img
               id="big2win-logo"
-              src="https://cdn.discordapp.com/attachments/1110721109076221993/1180589140069335110/IMG_0914.jpg"
+              src="https://media.discordapp.net/attachments/1110721109076221993/1182375929696227388/IMG_0931.jpg"
               alt="Big2Win Logo"
+              style={{ borderRadius: "50%" }}
             />
           </NavLink>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getBetThunk } from "../../store/bets";
 import UpdateBet from "../UpdateBets";
@@ -12,23 +12,20 @@ import "../Bet/Bet.css";
 export default function Bet() {
   const { betId } = useParams();
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const bet = useSelector((state) => state.bets.allBets[betId]);
-
-  //   const userId = sessionUser?.id;
-
   useEffect(() => {
     dispatch(getBetThunk(betId));
   }, [dispatch, betId]);
 
-  // const handleGameUpdate = () => {
-  //   history.push(`/games/${gameId}/update`);
-  // };
-
   if (!bet) {
     return null;
   }
+
+  const redirectToBets = () => {
+    history.push("/bets");
+  };
 
   return (
     <>
@@ -85,6 +82,10 @@ export default function Bet() {
         </div>
       </div>
       <div className="update-delete-bet-button">
+        <button className="all-button" onClick={redirectToBets}>
+          Check All Your Bets
+        </button>
+
         <OpenModalButton
           buttonText="Update Bet"
           modalComponent={<UpdateBet betId={betId} />}

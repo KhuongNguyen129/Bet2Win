@@ -1,9 +1,8 @@
 .profile-dropdown {
   position: absolute;
-  top: 8%;
+  top: 7%;
   right: 4.5%;
   border: 1px solid rgb(221, 221, 221);
-  padding: 10px;
   z-index: 1;
   text-decoration: none;
   width: fit-content;
@@ -37,17 +36,22 @@
   border-color: aliceblue;
   box-shadow: 1px 1px 2px rgb(115, 111, 111);
   border-radius: 10px;
-  padding: 4px 20px;
+  padding: 7px 25px;
 }
 
 #top-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 10px 40px;
+  /* align-items: center; */
+  margin: 30px 40px;
 }
 
 #big2win-logo {
   width: 100px;
   height: 80px;
+}
+
+.top-right-button:hover {
+  padding: 8px 30px;
+  box-shadow: 3px 3px 5px rgb(115, 111, 111);
 }

@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     margin: 0px;
-    padding: 0px 15px;
+    padding: 0px 5px;
 }
 
 .time1, .team-container > p, .spread, .total {
@@ -69,3 +69,13 @@
 
 }
 
+.game-info-container {
+    margin-top: 80px;
+}
+
+.team-container {
+    width: 200px;
+}
+.team-1-container, .team-2-container {
+    justify-content: space-around;
+}

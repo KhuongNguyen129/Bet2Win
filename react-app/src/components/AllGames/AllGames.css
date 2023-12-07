@@ -2,8 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 40px 100px;
-    gap: 15px
+    margin: 40px 80px;
+    gap: 12px
 }
 
 .game {
