@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllBetsThunk } from "../../store/bets";
+import "../AllBets/AllBets.css";
 
 export default function AllBets() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function AllBets() {
 
   return (
     <>
-      <div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
         {allBets &&
           allBets.map((bet) => (
             <div>

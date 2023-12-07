@@ -89,14 +89,14 @@ export default function CreateNewBet({ gameId }) {
                   <input
                     type="number"
                     value={spread1Bet}
-                    onChange={(e) => setSpread1Bet(e.target.value)}
+                    onChange={(e) => setSpread1Bet(Math.max(0, e.target.value))}
                   />
                 </div>
                 <div className="input2">
                   <input
                     type="number"
                     value={spread2Bet}
-                    onChange={(e) => setSpread2Bet(e.target.value)}
+                    onChange={(e) => setSpread2Bet(Math.max(0, e.target.value))}
                   />
                 </div>
               </div>
@@ -113,14 +113,14 @@ export default function CreateNewBet({ gameId }) {
                   <input
                     type="number"
                     value={underBet}
-                    onChange={(e) => setUnderBet(e.target.value)}
+                    onChange={(e) => setUnderBet(Math.max(0, e.target.value))}
                   />
                 </div>
                 <div className="input2">
                   <input
                     type="number"
                     value={overBet}
-                    onChange={(e) => setOverBet(e.target.value)}
+                    onChange={(e) => setOverBet(Math.max(0, e.target.value))}
                   />
                 </div>
               </div>
