@@ -1,6 +1,6 @@
 
 
-.team-1-container, .team-2-container, .spread1, .spread2, .over, .under {
+.spread1, .spread2, .over, .under {
     height: 70px;
     display: flex;
     justify-content: center;
@@ -8,6 +8,14 @@
     margin: 0px;
     padding: 0px 5px;
 }
+.team-1-container, .team-2-container{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px
+}
+
 
 .time1, .team-container > p, .spread, .total {
     margin: 0px;
@@ -69,13 +77,9 @@
 
 }
 
-.game-info-container {
-    margin-top: 80px;
-}
-
 .team-container {
     width: 200px;
 }
-.team-1-container, .team-2-container {
-    justify-content: space-around;
-}
+
+
+

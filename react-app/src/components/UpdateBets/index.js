@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getGameThunk } from "../../store/games";
 import { useModal } from "../../context/Modal";
 import { getAllBetsThunk } from "../../store/bets";
 import { updateBetThunk } from "../../store/bets";
 import { useSelector } from "react-redux";
+import "../UpdateBets/UpdateBets.css";
+
 export default function UpdateBet({ betId }) {
   const bet = useSelector((state) => state.bets.allBets[betId]);
   const dispatch = useDispatch();
@@ -55,56 +56,61 @@ export default function UpdateBet({ betId }) {
 
   return (
     <>
-      <h1>Update Your Bet</h1>
+      <h1 className="h1-update-bet">Update Your Bet</h1>
       {submit && errors.message && (
         <p className="error create-bet-err">{errors.message}</p>
       )}
 
-      <div>
+      <div className="update-main-container">
         <form onSubmit={handleSubmit}>
-          <label>Spread for team 1</label>
-          <div>
-            <input
-              type="number"
-              value={spread1Bet}
-              onChange={(e) => setSpread1Bet(Math.max(0, e.target.value))}
-            />
-          </div>
-
-          <div>
-            <label>Spread for team 2</label>
-            <div>
+          <div className="update-container-2">
+            <label>Spread for team 1</label>
+            <div className="update-input">
               <input
                 type="number"
-                value={spread2Bet}
-                onChange={(e) => setSpread2Bet(Math.max(0, e.target.value))}
+                value={spread1Bet}
+                onChange={(e) => setSpread1Bet(Math.max(0, e.target.value))}
               />
             </div>
-          </div>
 
-          <div>
-            <label>Under</label>
             <div>
-              <input
-                type="number"
-                value={underBet}
-                onChange={(e) => setUnderBet(Math.max(0, e.target.value))}
-              />
+              <label>Spread for team 2</label>
+              <div className="update-input">
+                <input
+                  type="number"
+                  value={spread2Bet}
+                  onChange={(e) => setSpread2Bet(Math.max(0, e.target.value))}
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label>Over</label>
             <div>
-              <input
-                type="number"
-                value={overBet}
-                onChange={(e) => setOverBet(Math.max(0, e.target.value))}
-              />
+              <label>Under</label>
+              <div className="update-input">
+                <input
+                  type="number"
+                  value={underBet}
+                  onChange={(e) => setUnderBet(Math.max(0, e.target.value))}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label>Over</label>
+              <div className="update-input">
+                <input
+                  type="number"
+                  value={overBet}
+                  onChange={(e) => setOverBet(Math.max(0, e.target.value))}
+                />
+              </div>
             </div>
           </div>
-
-          <button type="submit">Submit</button>
+          <div className="button-update-bet">
+            <button className="all-button update" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>

@@ -16,6 +16,7 @@ function SignupFormModal() {
   const [phone_number, setPhoneNumber] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const [submit, setSubmit] = useState(false);
 
   //   const checkValidation = () => {
   //     return (
@@ -60,8 +61,8 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
+    setSubmit(true);
   };
-  console.log("🚀 >>>>>>>>>> ~ errors:", errors);
 
   return (
     <>
@@ -77,7 +78,7 @@ function SignupFormModal() {
           <div className="form-chunk">
             <div className="err">
               <label>First Name</label>
-              {errors.first_name && (
+              {submit && errors.first_name && (
                 <p className="error-message">{errors.first_name}</p>
               )}
             </div>

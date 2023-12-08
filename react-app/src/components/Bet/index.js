@@ -30,7 +30,7 @@ export default function Bet() {
   return (
     <>
       <div id="main-container">
-        <div className="game-info-container">
+        <div className="bet-info-container">
           <div className="first-container">
             <div className="time-container">
               <p className="time1">Time</p>
@@ -38,14 +38,14 @@ export default function Bet() {
             </div>
             <div className="team-container">
               <p>Teams</p>
-              <div className="team-1-container">
+              <div className="team-1-container-all-game">
                 <img
                   src={bet.game.team_1.logo}
                   style={{ width: "80px", height: "60px" }}
                 />
                 <p>{bet.game.team_1.name}</p>
               </div>
-              <div className="team-2-container">
+              <div className="team-2-container-all-game">
                 <img
                   src={bet.game.team_2.logo}
                   style={{ width: "80px", height: "60px" }}

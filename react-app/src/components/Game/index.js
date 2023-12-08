@@ -62,9 +62,9 @@ export default function Game() {
           <div className="spread-container">
             <p className="spread">Spread</p>
 
-            <p className="spread1">{game.spread_1}</p>
+            <p className="spread1-all-games">{game.spread_1}</p>
 
-            <p className="spread1">{game.spread_2}</p>
+            <p className="spread2-all-games">{game.spread_2}</p>
           </div>
 
           <div className="total-container">

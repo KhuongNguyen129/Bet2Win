@@ -134,14 +134,14 @@ def seed_teams():
     IND = Team(
         name = "Indianapolis Colts",
         initial = "IND",
-        logo = "https://banner2.cleanpng.com/20180529/rxk/kisspng-indianapolis-colts-nfl-seattle-seahawks-san-franci-5b0d7fe9ee6fe3.6498911815276113699767.jpg",
+        logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Indianapolis_Colts_logo.svg/1280px-Indianapolis_Colts_logo.svg.png",
         state = "NY"
     )
     db.session.add(IND)
 
     LA = Team(
         name = "Los Angeles Rams",
-        initial = "LA",
+        initial = "RAM",
         logo = "https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/Los_Angeles_Rams_logo.svg/1920px-Los_Angeles_Rams_logo.svg.png",
         state = "CA"
     )

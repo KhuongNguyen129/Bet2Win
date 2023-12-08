@@ -1,6 +1,10 @@
 #modal-content {
     border-radius: 10px;
-    
+    background-image: url('https://media.istockphoto.com/id/1280319000/photo/sunset-in-the-mountains-panorama-carpathians-ukraine.jpg?s=612x612&w=0&k=20&c=6359-ANXqwgtOGehNXvGKloZfG42oItGkUS_hca2cf8=');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed ;
 }
 
 .h1-update-game {
