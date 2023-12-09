@@ -7,10 +7,7 @@ export default function AllGames() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const allGames = Object.values(games);
-  console.log("🚀 >>>>>>>>>> ~ allGames:", allGames);
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("🚀 >>>>>>>>>> ~ sessionUser:", sessionUser);
-  console.log("🚀 >>>>>>>>>> ~ games:", games);
 
   useEffect(() => {
     dispatch(getAllGamesThunk());
