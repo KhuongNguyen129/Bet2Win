@@ -18,8 +18,8 @@ export default function Game() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const game = useSelector((state) => state.games.allGames[gameId]);
-
   console.log("🚀 >>>>>>>>>> ~ game:", game);
+  //   const userId = sessionUser?.id;
 
   useEffect(() => {
     dispatch(getGameThunk(gameId));
@@ -62,9 +62,9 @@ export default function Game() {
           <div className="spread-container">
             <p className="spread">Spread</p>
 
-            <p className="spread1-all-games">{game.spread_1}</p>
+            <p className="spread1">{game.spread_1}</p>
 
-            <p className="spread2-all-games">{game.spread_2}</p>
+            <p className="spread1">{game.spread_2}</p>
           </div>
 
           <div className="total-container">
@@ -95,10 +95,12 @@ export default function Game() {
           </div>
         ) : (
           <div className="button-bet">
-            <OpenModalButton
-              buttonText="Bet"
-              modalComponent={<CreateNewBet gameId={gameId} />}
-            ></OpenModalButton>
+            {sessionUser && sessionUser.id !== game.owner_id && (
+              <OpenModalButton
+                buttonText="Bet"
+                modalComponent={<CreateNewBet gameId={gameId} />}
+              ></OpenModalButton>
+            )}
           </div>
         )}
       </div>

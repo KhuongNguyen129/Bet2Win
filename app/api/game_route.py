@@ -7,9 +7,11 @@ from app.api.auth_routes import validation_errors_to_error_messages
 game_routes = Blueprint("games", __name__)
 
 @game_routes.route('/')
-
 def get_all_games():
-    games = Game.query.all()
+    page = request.args.get('page', default=1, type=int)
+    page_size = request.args.get('page_size', default=10, type=int)
+    offset = (page - 1) * page_size
+    games = Game.query.offset(offset).limit(page_size).all()
     return jsonify([game.to_dict() for game in games])
 
 @game_routes.route("/<int:id>")

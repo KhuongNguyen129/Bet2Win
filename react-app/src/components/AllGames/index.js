@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGamesThunk } from "../../store/games";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
@@ -7,11 +7,17 @@ export default function AllGames() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const allGames = Object.values(games);
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(getAllGamesThunk());
-  }, [dispatch]);
+    dispatch(getAllGamesThunk(currentPage, 10));
+  }, [dispatch, currentPage]);
+
+  const pageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <>
@@ -44,6 +50,16 @@ export default function AllGames() {
             </NavLink>
           </div>
         ))}
+      </div>
+      <div className="pagination">
+        <button
+          onClick={() => pageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>{currentPage}</span>
+        <button onClick={() => pageChange(currentPage + 1)}>Next</button>
       </div>
     </>
   );
