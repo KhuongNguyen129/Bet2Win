@@ -29,14 +29,15 @@ function ProfileButton({ user }) {
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+  const closeMenu = () => setShowMenu(false);
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    closeMenu();
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
 
   return (
     <>
@@ -50,14 +51,28 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             <li>
               <NavLink exact to="/games/new">
-                <button className="profile-dropdown-button">
+                <button
+                  className="profile-dropdown-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeMenu();
+                  }}
+                >
                   Create a New Game
                 </button>
               </NavLink>
             </li>
             <li>
               <NavLink exact to="/bets">
-                <button className="profile-dropdown-button">Manage Bets</button>
+                <button
+                  className="profile-dropdown-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeMenu();
+                  }}
+                >
+                  Manage Bets
+                </button>
               </NavLink>
             </li>
             <li>
