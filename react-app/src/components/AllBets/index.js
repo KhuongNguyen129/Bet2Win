@@ -1,22 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { getAllBetsThunk } from "../../store/bets";
 import "../AllBets/AllBets.css";
 
 export default function AllBets() {
   const dispatch = useDispatch();
   const bets = useSelector((state) => state.bets.allBets);
-  console.log("🚀 >>>>>>>>>> ~ bets:", bets);
+  // console.log("🚀 >>>>>>>>>> ~ bets:", bets);
   const sessionUser = useSelector((state) => state.session.user);
-  const allBets = Object.values(bets).filter(
-    (bet) => bet.user_id === sessionUser.id
-  );
-  console.log("🚀 >>>>>>>>>> ~ allBets:", allBets);
-
+  console.log("🚀 >>>>>>>>>> ~ sessionUser:", sessionUser);
+  const history = useHistory();
+  // console.log("🚀 >>>>>>>>>> ~ allBets:", allBets);
+  const allBets = sessionUser
+    ? Object.values(bets).filter((bet) => bet.user_id === sessionUser.id)
+    : [];
   useEffect(() => {
+    if (!sessionUser) {
+      history.push("/games");
+    }
     dispatch(getAllBetsThunk());
-  }, [dispatch]);
+  }, [dispatch, sessionUser, history]);
 
   return (
     <>

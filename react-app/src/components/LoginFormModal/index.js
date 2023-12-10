@@ -9,7 +9,6 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  console.log("🚀 >>>>>>>>>> ~ errors:", errors);
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -43,6 +42,17 @@ function LoginFormModal() {
       });
   };
 
+  const clearErrorAndUpdate = (setFn, errorField) => {
+    return (e) => {
+      if (errors[errorField]) {
+        const updatedErrors = { ...errors };
+        delete updatedErrors[errorField];
+        setErrors(updatedErrors);
+      }
+      setFn(e.target.value);
+    };
+  };
+
   return (
     <div id="login-form-container">
       <form className="form" onSubmit={handleSubmit}>
@@ -62,7 +72,7 @@ function LoginFormModal() {
             <input
               type="text"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={clearErrorAndUpdate(setEmail, "email")}
             />
           </div>
           <div className="password">
@@ -75,7 +85,7 @@ function LoginFormModal() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={clearErrorAndUpdate(setPassword, "password")}
             />
             {password && errors.password && (
               <p className="err-message">{errors.password}</p>

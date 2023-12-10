@@ -15,9 +15,11 @@ export default function Bet() {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const bet = useSelector((state) => state.bets.allBets[betId]);
+
   useEffect(() => {
+    if (!sessionUser) history.push("/games");
     dispatch(getBetThunk(betId));
-  }, [dispatch, betId]);
+  }, [dispatch, betId, sessionUser, history]);
 
   if (!bet) {
     return null;
