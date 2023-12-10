@@ -42,7 +42,7 @@ const deleteGame = (gameId) => {
 
 // THUNK
 export const getAllGamesThunk =
-  (page = 1, pageSize = 10) =>
+  (page = 1, pageSize = 9) =>
   async (dispatch) => {
     const res = await fetch(`/api/games/?page=${page}&page_size=${pageSize}`);
     if (res.ok) {
