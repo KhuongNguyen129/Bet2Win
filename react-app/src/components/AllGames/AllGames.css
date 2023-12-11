@@ -53,3 +53,10 @@
     width: 50px;
     text-align: center;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
