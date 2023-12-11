@@ -72,7 +72,7 @@
     display: flex;
     gap: 4px
 }
-.button-bet:hover, .button-delete-game:hover, .button-update-game:hover {
+.button-delete-game:hover, .button-update-game:hover {
     border: 1px solid rgb(110, 108, 108);
     box-shadow: 4px 4px 8px grey;
 
