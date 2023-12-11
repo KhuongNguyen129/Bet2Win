@@ -107,7 +107,7 @@ export default function UpdateBet({ betId }) {
             </div>
           </div>
           <div className="button-update-bet">
-            <button className="all-button update" type="submit">
+            <button className="all-button" type="submit">
               Submit
             </button>
           </div>

@@ -141,7 +141,7 @@ export default function UpdateGame({ gameId }) {
           </div>
           {submit && errors.total && <p className="error">{errors.total}</p>}
           <div className="submit-update">
-            <button className="submit-update" type="submit">
+            <button className="all-button" type="submit">
               Submit
             </button>
           </div>

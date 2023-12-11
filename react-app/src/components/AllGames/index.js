@@ -58,8 +58,17 @@ export default function AllGames() {
         >
           Previous
         </button>
-        <span>{currentPage}</span>
-        <button onClick={() => pageChange(currentPage + 1)}>Next</button>
+        {allGames.length >= 10 && (
+          <>
+            <span>{currentPage}</span>
+            <button
+              onClick={() => pageChange(currentPage + 1)}
+              disabled={allGames.length < 10}
+            >
+              Next
+            </button>
+          </>
+        )}
       </div>
     </>
   );

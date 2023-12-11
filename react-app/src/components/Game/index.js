@@ -81,12 +81,11 @@ export default function Game() {
           <div className="button-container">
             <div>
               <OpenModalButton
-                className="button-update-game"
                 buttonText="Update Game"
                 modalComponent={<UpdateGame gameId={gameId} />}
               ></OpenModalButton>
             </div>
-            <div className="button-delete-game">
+            <div>
               <OpenModalButton
                 buttonText="Delete Game"
                 modalComponent={<DeleteButton gameId={gameId} />}
