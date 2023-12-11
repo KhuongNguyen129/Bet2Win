@@ -1,3 +1,7 @@
+#h1-all-games {
+    text-align: center;
+}
+
 .all-games {
     display: flex;
     flex-wrap: wrap;
