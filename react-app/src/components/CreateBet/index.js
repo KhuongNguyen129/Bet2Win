@@ -127,7 +127,9 @@ export default function CreateNewBet({ gameId }) {
             </div>
           </div>
           <div className="submit-create">
-            <button type="submit">Submit</button>
+            <button className="all-button" type="submit">
+              Submit
+            </button>
           </div>
         </form>
       </div>

@@ -18,3 +18,8 @@
     width: 94%;
     margin: 0px 10px;
 }
+
+.button-update-bet{
+    display: flex;
+    justify-content: center;
+}

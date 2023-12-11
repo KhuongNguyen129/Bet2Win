@@ -48,6 +48,7 @@
     width: fit-content;
     border: 1px solid black;
     box-shadow: 2px 2px 4px grey;
+    transition: 0.3s;
 
 }
 
@@ -81,5 +82,9 @@
     width: 200px;
 }
 
+
+.first-container:hover {
+    box-shadow: 5px 5px 10px grey;
+}
 
 
