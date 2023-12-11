@@ -24,6 +24,7 @@ export default function AllBets() {
 
   return (
     <>
+      <h1 id="h1-all-bets">Your Bets</h1>
       <div
         style={{
           display: "flex",

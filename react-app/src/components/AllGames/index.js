@@ -21,6 +21,7 @@ export default function AllGames() {
 
   return (
     <>
+      <h1 id="h1-all-games">All Games</h1>
       <div className="all-games">
         {allGames.map((game) => (
           <div id="game-container">

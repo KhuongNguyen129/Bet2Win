@@ -1,4 +1,8 @@
 /* TODO Add site wide styles */
+*{
+    margin: 0px;
+
+}
 a {
     text-decoration: none;
     color: black
@@ -15,8 +19,3 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed ;
 }
-
-/* *{
-    color: white;
-
-} */

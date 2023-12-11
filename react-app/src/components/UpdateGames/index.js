@@ -62,10 +62,9 @@ export default function UpdateGame({ gameId }) {
     formData.append("spread_2", spread2);
     formData.append("total", total);
     // formData.append("active", active);
-    await dispatch(updateGameThunk(formData, gameId));
-
-    history.push(`/games/${gameId}`);
     if (Object.entries(errors).length === 0) {
+      await dispatch(updateGameThunk(formData, gameId));
+      history.push(`/games/${gameId}`);
       closeModal();
     }
     setSubmit(true);

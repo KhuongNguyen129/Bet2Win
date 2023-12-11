@@ -35,8 +35,8 @@ export default function CreateNewGame() {
 
     // formData.append("active", active);
 
-    await dispatch(createGameThunk(formData));
     if (Object.keys(validationErrors).length === 0) {
+      await dispatch(createGameThunk(formData));
       history.push(`/games`);
     }
     setSubmit(true);
