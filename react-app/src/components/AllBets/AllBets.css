@@ -1,0 +1,21 @@
+#h1-all-bets {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.spread1-all-games, .spread2-all-games{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px 5px;
+}
+
+.team-1-container-all-game,.team-2-container-all-game {
+    margin-left: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap:10px
+}

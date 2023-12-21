@@ -1,0 +1,25 @@
+.update-input > input{
+    width: 97%;
+}
+
+.update-main-container {
+    width: 400px;
+    margin: 10px 20px;
+}
+.update-container-2 {
+   margin: 10px;
+}
+
+.h1-update-bet {
+    text-align: center;
+}
+
+.update {
+    width: 94%;
+    margin: 0px 10px;
+}
+
+.button-update-bet{
+    display: flex;
+    justify-content: center;
+}

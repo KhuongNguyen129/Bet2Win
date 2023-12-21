@@ -1,0 +1,65 @@
+
+.total > p, .bet-money > p {
+    margin: 0px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.total-info-box {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+}
+
+.bet-money > p {
+    margin: 0px;
+
+}
+
+.total-bet {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px 5px;
+}
+
+.bet-money > .input1 > input {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px 10px 5px;
+    padding: 0px 5px;
+}
+.bet-money > .input2 > input {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px 5px 5px;
+    padding: 0px 5px;
+}
+
+.input2 {
+    margin-top: 15px;
+}
+
+.field1 {
+    border-right: 1px solid black;
+}
+
+.create-bet-err {
+    padding: 0px;
+}
+
+.bet-money, .total-info-box {
+    width: 85px;
+}
+
+.bet-money > p {
+    display: flex;
+    justify-content: center;
+}

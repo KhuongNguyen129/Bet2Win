@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
@@ -14,8 +14,9 @@ function SignupFormModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, setState] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const [submit, setSubmit] = useState(false);
 
   //   const checkValidation = () => {
   //     return (
@@ -60,8 +61,19 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
+    setSubmit(true);
   };
-  console.log("🚀 >>>>>>>>>> ~ errors:", errors);
+
+  const clearErrorAndUpdate = (setFn, errorField) => {
+    return (e) => {
+      if (errors[errorField]) {
+        const updatedErrors = { ...errors };
+        delete updatedErrors[errorField];
+        setErrors(updatedErrors);
+      }
+      setFn(e.target.value);
+    };
+  };
 
   return (
     <>
@@ -77,18 +89,15 @@ function SignupFormModal() {
           <div className="form-chunk">
             <div className="err">
               <label>First Name</label>
-              {errors.first_name && (
+              {submit && errors.first_name && (
                 <p className="error-message">{errors.first_name}</p>
               )}
             </div>
             <input
               type="text"
               value={first_name}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={clearErrorAndUpdate(setFirstName, "first_name")}
             />
-            {errors.first_name && (
-              <p className="error-message">{errors.first_name}</p>
-            )}
           </div>
           <div className="form-chunk">
             <div className="err">
@@ -100,7 +109,7 @@ function SignupFormModal() {
             <input
               type="text"
               value={last_name}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={clearErrorAndUpdate(setLastName, "last_name")}
             />
           </div>
           <div className="form-chunk">
@@ -113,7 +122,7 @@ function SignupFormModal() {
             <input
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={clearErrorAndUpdate(setUsername, "username")}
             />
           </div>
           <div className="form-chunk">
@@ -124,7 +133,7 @@ function SignupFormModal() {
             <input
               type="text"
               value={state}
-              onChange={(e) => setState(e.target.value)}
+              onChange={clearErrorAndUpdate(setState, "state")}
             />
           </div>
           <div className="form-chunk">
@@ -137,7 +146,7 @@ function SignupFormModal() {
             <input
               type="text"
               value={phone_number}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={clearErrorAndUpdate(setPhoneNumber, "phone_number")}
             />
           </div>
           <div className="form-chunk">
@@ -148,7 +157,7 @@ function SignupFormModal() {
             <input
               type="text"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={clearErrorAndUpdate(setEmail, "email")}
             />
           </div>
 
@@ -162,7 +171,7 @@ function SignupFormModal() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={clearErrorAndUpdate(setPassword, "password")}
             />
           </div>
           <div className="form-chunk">
@@ -175,7 +184,10 @@ function SignupFormModal() {
             <input
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={clearErrorAndUpdate(
+                setConfirmPassword,
+                "confirmPassword"
+              )}
             />
           </div>
           <div className="sign-up">

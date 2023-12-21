@@ -1,0 +1,50 @@
+.h1-create-game {
+    text-align: center;
+}
+
+.create-game-form-container {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.create-game-form > div > p{
+    width: 80px;
+    margin: 0px;
+}
+.create-game-form > div > input{
+    width: 400px;
+    border-radius: 4px;
+}
+.create-game-form > div > select {
+    width: 406px;
+    border-radius: 4px;
+}
+.create-game-form > .info-box {
+    display: flex;
+    align-items: center;
+}
+
+.info-box {
+    margin: 10px;
+}
+
+.error {
+    margin: 0px;
+    padding: 0px 90px;
+    color: red
+}
+
+.submit-create {
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.submit-create > button {
+    border-radius: 4px;
+    padding: 5px 15px;
+}
+

@@ -1,23 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGamesThunk } from "../../store/games";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import Footer from "../Footer";
 import "./AllGames.css";
 export default function AllGames() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const allGames = Object.values(games);
-  console.log("🚀 >>>>>>>>>> ~ allGames:", allGames);
-  const sessionUser = useSelector((state) => state.session.user);
-  console.log("🚀 >>>>>>>>>> ~ sessionUser:", sessionUser);
-  console.log("🚀 >>>>>>>>>> ~ games:", games);
+  // const sessionUser = useSelector((state) => state.session.user);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(getAllGamesThunk());
-  }, [dispatch]);
+    dispatch(getAllGamesThunk(currentPage, 10));
+  }, [dispatch, currentPage]);
+
+  const pageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <>
+      <h1 id="h1-all-games">All Games</h1>
       <div className="all-games">
         {allGames.map((game) => (
           <div id="game-container">
@@ -33,7 +38,7 @@ export default function AllGames() {
                   </div>
                   <p>{game.team_1.initial}</p>
                 </div>
-                <p>time</p>
+                <p className="all-games-time">{game.time}:00 PST</p>
                 <div className="team2">
                   <div className="team-logo">
                     <img
@@ -48,6 +53,28 @@ export default function AllGames() {
           </div>
         ))}
       </div>
+      <div className="pagination">
+        <button
+          id="pagination-button previous"
+          onClick={() => pageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        {allGames.length >= 10 && (
+          <>
+            <span>{currentPage}</span>
+            <button
+              id="pagination-button next"
+              onClick={() => pageChange(currentPage + 1)}
+              disabled={allGames.length < 10}
+            >
+              Next
+            </button>
+          </>
+        )}
+      </div>
+      <Footer />
     </>
   );
 }

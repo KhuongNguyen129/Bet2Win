@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createGameThunk } from "../../store/games";
 import { getAllTeamsThunk } from "../../store/teams";
+import "../CreateGame/CreateGame.css";
+// import { DOUBLE } from "sequelize";
 
 export default function CreateNewGame() {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ export default function CreateNewGame() {
   const [spread1, setSpread1] = useState("");
   const [spread2, setSpread2] = useState("");
   const [total, setTotal] = useState("");
+  const [submit, setSubmit] = useState(false);
   // const [active, setActive] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const teams = useSelector((state) => state.teams.allTeams);
@@ -29,11 +32,14 @@ export default function CreateNewGame() {
     formData.append("spread_1", spread1);
     formData.append("spread_2", spread2);
     formData.append("total", total);
+
     // formData.append("active", active);
 
-    await dispatch(createGameThunk(formData));
-
-    history.push(`/games`);
+    if (Object.keys(validationErrors).length === 0) {
+      await dispatch(createGameThunk(formData));
+      history.push(`/games`);
+    }
+    setSubmit(true);
   };
 
   useEffect(() => {
@@ -52,26 +58,31 @@ export default function CreateNewGame() {
     if (!spread1) errObj.spread1 = "Spread1 is required";
     if (!spread2) errObj.spread2 = "Spread2 is required";
     if (!total) errObj.total = "Total is required";
+    // if (team1.id === team2.id)
+    //   errObj.message = "Team 1 and team 2 can not be the same";
     // if (!active) errObj.active = "Active is required";
     setValidationErrors(errObj);
   }, [time, team1, team2, spread1, spread2, total]);
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Time</label>
+      <h1 className="h1-create-game">Create a Game</h1>
+      <div className="create-game-form-container">
+        <form className="create-game-form" onSubmit={handleSubmit}>
+          <div className="info-box create">
+            <p>Time: </p>
             <input
               type="number"
+              placeholder="Time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
+          <p className="error">{submit && validationErrors.time}</p>
 
-          <div>
-            <label>Team 1</label>
-            <select value={team1} onChange={(e) => setTeam1(e.target.value)}>
+          <div className="info-box create">
+            <p>Team1: </p>
+            <select value={team1.id} onChange={(e) => setTeam1(e.target.value)}>
               <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
@@ -81,9 +92,11 @@ export default function CreateNewGame() {
             </select>
           </div>
 
-          <div>
-            <label>Team 2</label>
-            <select value={team2} onChange={(e) => setTeam2(e.target.value)}>
+          <p className="error">{submit && validationErrors.time1}</p>
+
+          <div className="info-box create">
+            <p>Team2: </p>
+            <select value={team2.id} onChange={(e) => setTeam2(e.target.value)}>
               <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
@@ -93,34 +106,46 @@ export default function CreateNewGame() {
             </select>
           </div>
 
-          <div>
-            <label>spread1</label>
+          <div className="info-box create">
+            <p>Spread1: </p>
             <input
               type="number"
               value={spread1}
               onChange={(e) => setSpread1(e.target.value)}
             />
           </div>
+          {submit && validationErrors.spread1 && (
+            <p className="error">{validationErrors.spread1}</p>
+          )}
 
-          <div>
-            <label>spread2</label>
+          <div className="info-box create">
+            <p>Spread2: </p>
             <input
               type="number"
               value={spread2}
               onChange={(e) => setSpread2(e.target.value)}
             />
           </div>
+          {submit && validationErrors.spread2 && (
+            <p className="error">{validationErrors.spread2}</p>
+          )}
 
-          <div>
-            <label>total</label>
+          <div className="info-box create">
+            <p>Total: </p>
             <input
               type="number"
               value={total}
-              onChange={(e) => setTotal(e.target.value)}
+              onChange={(e) => setTotal(Math.max(0, e.target.value))}
             />
           </div>
-
-          <button type="submit">Submit</button>
+          {submit && validationErrors.total && (
+            <p className="error">{validationErrors.total}</p>
+          )}
+          <div className="submit-create">
+            <button className="all-button" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>

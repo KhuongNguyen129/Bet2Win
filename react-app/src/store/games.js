@@ -41,17 +41,19 @@ const deleteGame = (gameId) => {
 };
 
 // THUNK
-export const getAllGamesThunk = () => async (dispatch) => {
-  const res = await fetch("/api/games/");
-  if (res.ok) {
-    const games = await res.json();
-    dispatch(getAllGames(games));
-    return games;
-  } else {
-    const errors = await res.json();
-    return errors;
-  }
-};
+export const getAllGamesThunk =
+  (page = 1, pageSize = 9) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/games/?page=${page}&page_size=${pageSize}`);
+    if (res.ok) {
+      const games = await res.json();
+      dispatch(getAllGames(games));
+      return games;
+    } else {
+      const errors = await res.json();
+      return errors;
+    }
+  };
 export const getGameThunk = (gameId) => async (dispatch) => {
   const res = await fetch(`/api/games/${gameId}`);
   if (res.ok) {

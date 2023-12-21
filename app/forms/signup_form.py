@@ -20,8 +20,11 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 def contains_at_symbol(form, field):
-    if '@' not in field.data:
-        raise ValidationError('Invalid email.')
+    email = field.data
+    if '@' not in email:
+        raise ValidationError('Email address must include @ symbol')
+    elif not email.endswith(".com"):
+        raise ValidationError('Email address must end in ".com"')
 
 class SignUpForm(FlaskForm):
     first_name = StringField("First_name", validators=[DataRequired()])

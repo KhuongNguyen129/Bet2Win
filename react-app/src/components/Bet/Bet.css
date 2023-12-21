@@ -1,0 +1,50 @@
+.bet-money > .input1{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 5px 30px 5px;
+    padding: 0px 5px;
+    border: none;
+}
+
+.bet-money > .input2{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 27px 5px 0px 5px;
+    padding: 0px 5px;
+    border: none;
+}
+
+.update-delete-bet-button {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.set-width {
+    width: 170px;
+}
+
+.redirect-button {
+    display: flex;
+    justify-content: center;
+}
+
+.all-button {
+    padding: 10px 25px;
+    background-color: #893200;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.all-button:hover {
+
+    background-color: #43C174;
+
+}
+
+

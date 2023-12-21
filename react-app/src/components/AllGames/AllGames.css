@@ -1,9 +1,13 @@
+#h1-all-games {
+    text-align: center;
+}
+
 .all-games {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 40px 100px;
-    gap: 15px
+    margin: 40px 75px;
+    gap: 12px
 }
 
 .game {
@@ -32,6 +36,7 @@
     border: 1px solid gray;
     border-radius: 8px;
     box-shadow: 2px 2px 4px gray;
+    transition: 0.3s;
 }
 
 #game-container:hover {
@@ -47,3 +52,42 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+
+.all-games-time {
+    width: 50px;
+    text-align: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination > button{
+    border: 1px solid grey;
+    background-color: #efebebbb;
+    border-color: aliceblue;
+    box-shadow: 1px 1px 2px rgb(115, 111, 111);
+    border-radius: 10px;
+    padding: 7px 25px;
+    margin: 0px 8px;
+}
+  
+.pagination > button:hover {
+    background-color: #0ac07d;
+    color: black;
+}
+  
+.pagination > #previous {
+    background-color: #04AA6D;
+    color: black;
+}
+  
+.pagination > #next {
+    background-color: #04AA6D;
+    color: white;
+}
+  

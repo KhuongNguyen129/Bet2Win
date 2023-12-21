@@ -1,13 +1,21 @@
 
 
-.team-1-container, .team-2-container, .spread1, .spread2, .over, .under {
+.spread1, .spread2, .over, .under {
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0px;
-    padding: 0px 15px;
+    padding: 0px 5px;
 }
+.team-1-container, .team-2-container{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px
+}
+
 
 .time1, .team-container > p, .spread, .total {
     margin: 0px;
@@ -40,6 +48,7 @@
     width: fit-content;
     border: 1px solid black;
     box-shadow: 2px 2px 4px grey;
+    transition: 0.3s;
 
 }
 
@@ -63,9 +72,19 @@
     display: flex;
     gap: 4px
 }
-.button-bet:hover, .button-delete-game:hover, .button-update-game:hover {
+.button-delete-game:hover, .button-update-game:hover {
     border: 1px solid rgb(110, 108, 108);
     box-shadow: 4px 4px 8px grey;
 
 }
+
+.team-container {
+    width: 200px;
+}
+
+
+.first-container:hover {
+    box-shadow: 5px 5px 10px grey;
+}
+
 

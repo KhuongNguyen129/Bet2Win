@@ -24,11 +24,19 @@ export default function DeleteButton({ gameId }) {
 
   return (
     <>
-      <div classname="delete-button">
+      <div id="delete-container">
         <h2>Confirm Delete</h2>
         <h3>Are you sure you want to remove this game?</h3>
-        <button onClick={handleSubmit}>Yes (Delete Game)</button>
-        <button onClick={closeTheModel}>No (Keep Spot)</button>
+        <button id="delete-button" onClick={handleSubmit}>
+          Yes (Delete Game)
+        </button>
+        <button
+          id="keep-button"
+          classname="delete-button"
+          onClick={closeTheModel}
+        >
+          No (Keep Spot)
+        </button>
       </div>
     </>
   );

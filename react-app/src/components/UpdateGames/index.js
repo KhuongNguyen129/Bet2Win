@@ -16,17 +16,24 @@ export default function UpdateGame({ gameId }) {
   console.log("🚀 >>>>>>>>>> ~ gamessdfsdf:", game);
 
   const [time, setTime] = useState(game.time);
-  const [team1, setTeam1] = useState(game.team_1);
-  const [team2, setTeam2] = useState(game.team_2);
+  const [team1, setTeam1] = useState(game.team_1.id);
+  const [team2, setTeam2] = useState(game.team_2.id);
   const [spread1, setSpread1] = useState(game.spread_1);
   const [spread2, setSpread2] = useState(game.spread_2);
   const [total, setTotal] = useState(game.total);
   const [errors, setErrors] = useState({});
+  const [submit, setSubmit] = useState(false);
+
   // const [active, setActive] = useState(false);
 
   useEffect(() => {
     let errorsObj = {};
-    if (!time) errorsObj.time = "Time is required";
+    if (!time) {
+      errorsObj.time = "Time is required";
+    } else if (time < 0 || time > 24) {
+      errorsObj.time = "Time must be between 0 and 25";
+    }
+
     if (!team1) errorsObj.team1 = "Team 1 is required";
     if (!team2) errorsObj.team2 = "Team 2 is required";
     if (!spread1) errorsObj.spread1 = "Spread 1 is required";
@@ -34,7 +41,7 @@ export default function UpdateGame({ gameId }) {
     if (!total) errorsObj.total = "Total is required";
 
     setErrors(errorsObj);
-  }, [time, team1, team2, spread1, spread2]);
+  }, [time, team1, team2, spread1, spread2, total]);
 
   useEffect(() => {
     dispatch(getAllTeamsThunk());
@@ -43,15 +50,6 @@ export default function UpdateGame({ gameId }) {
   useEffect(() => {
     dispatch(getGameThunk(gameId));
   }, [dispatch, gameId]);
-
-  useEffect(() => {
-    setTime(game.time || "");
-    setTeam1(game.team_1 || "");
-    setTeam2(game.team_2 || "");
-    setSpread1(game.spread_1 || "");
-    setSpread2(game.spread_2 || "");
-    setTotal(game.total || "");
-  }, [game]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,12 +62,12 @@ export default function UpdateGame({ gameId }) {
     formData.append("spread_2", spread2);
     formData.append("total", total);
     // formData.append("active", active);
-    await dispatch(updateGameThunk(formData, gameId));
-
-    history.push(`/games/${gameId}`);
     if (Object.entries(errors).length === 0) {
+      await dispatch(updateGameThunk(formData, gameId));
+      history.push(`/games/${gameId}`);
       closeModal();
     }
+    setSubmit(true);
   };
 
   return (
@@ -86,25 +84,22 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          {errors.time && <p className="error">{errors.time}</p>}
+          {submit && errors.time && <p className="error">{errors.time}</p>}
 
           <div className="info-box">
             <p>Team1: </p>
             <select value={team1} onChange={(e) => setTeam1(e.target.value)}>
-              <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))}
             </select>
-            {errors.team1 && <p className="error">{errors.time1}</p>}
           </div>
 
           <div className="info-box">
             <p>Team2: </p>
             <select value={team2} onChange={(e) => setTeam2(e.target.value)}>
-              <option value="">Select Team</option>
               {teamObj.map((team) => (
                 <option key={team.id} value={team.id}>
                   {team.name}
@@ -131,19 +126,21 @@ export default function UpdateGame({ gameId }) {
               onChange={(e) => setSpread2(e.target.value)}
             />
           </div>
-          {errors.spread2 && <p className="error">{errors.spread2}</p>}
+          {submit && errors.spread2 && (
+            <p className="error">{errors.spread2}</p>
+          )}
 
           <div className="info-box">
             <p>Total: </p>
             <input
               type="number"
               value={total}
-              onChange={(e) => setTotal(e.target.value)}
+              onChange={(e) => setTotal(Math.max(0, e.target.value))}
             />
           </div>
-          {errors.total && <p className="error">{errors.total}</p>}
+          {submit && errors.total && <p className="error">{errors.total}</p>}
           <div className="submit-update">
-            <button className="submit-update" type="submit">
+            <button className="all-button" type="submit">
               Submit
             </button>
           </div>
