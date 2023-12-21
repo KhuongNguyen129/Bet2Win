@@ -62,6 +62,32 @@
 .pagination {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
 }
 
+.pagination > button{
+    border: 1px solid grey;
+    background-color: #efebebbb;
+    border-color: aliceblue;
+    box-shadow: 1px 1px 2px rgb(115, 111, 111);
+    border-radius: 10px;
+    padding: 7px 25px;
+    margin: 0px 8px;
+}
+  
+.pagination > button:hover {
+    background-color: #0ac07d;
+    color: black;
+}
+  
+.pagination > #previous {
+    background-color: #04AA6D;
+    color: black;
+}
+  
+.pagination > #next {
+    background-color: #04AA6D;
+    color: white;
+}
+  

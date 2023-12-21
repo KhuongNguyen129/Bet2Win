@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGamesThunk } from "../../store/games";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import Footer from "../Footer";
 import "./AllGames.css";
 export default function AllGames() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ export default function AllGames() {
       </div>
       <div className="pagination">
         <button
+          id="pagination-button previous"
           onClick={() => pageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -63,6 +65,7 @@ export default function AllGames() {
           <>
             <span>{currentPage}</span>
             <button
+              id="pagination-button next"
               onClick={() => pageChange(currentPage + 1)}
               disabled={allGames.length < 10}
             >
@@ -71,6 +74,7 @@ export default function AllGames() {
           </>
         )}
       </div>
+      <Footer />
     </>
   );
 }
