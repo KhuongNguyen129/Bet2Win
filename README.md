@@ -1,6 +1,6 @@
 # Khuong's Full Stack Project (Dogsy)
 
-Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to explore the website and check out what our site has to offer for your furry friends. Users can view and review products while browsing Dogsy.The project was built using Flask for back-end and React for front-end.
+Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour of the website and discover the diverse range of games available for your betting pleasure. Users can explore, place bets, and engage in discussions on Bet2Win. This project is crafted with Flask for the back-end and React for the front-end, ensuring an enjoyable betting experience.
 
 **Click on the link below to visit the live site!**<br>
 [![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
@@ -10,10 +10,10 @@ Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to
 [![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/khuong-c-nguyen/)
 
 **Languages Used**<br>
-![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 <!-- ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) -->
 
 **Site Preview**<br>
@@ -60,19 +60,18 @@ Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to
 
 ![](https://cdn.discordapp.com/attachments/1110721109076221993/1196641120906641540/image.png)
 
-- This page showcases upcoming and popular betting events
-- Get a preview of the betting options available on Bet2Win
+- Click the 'Ready to cash out!!!' link to navigate here
 
 ## Main Page
 
 ![All products](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
 
-- The main page displays a list of all available games on Betify
+- The main page displays a list of all available games on Bet2Win
 - Anyone can view this page to explore betting options for different games
 
 ## Signup
 
-![Sign up](image-3.png)
+![Sign up](https://cdn.discordapp.com/attachments/1110721109076221993/1196687779342594048/image.png)
 
 - Unregistered users can create their own account via the top-right hand corner dropdown menu
 - Invalid information will prompt error messages until user resolves them successfully
@@ -80,7 +79,7 @@ Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to
 
 ## Login
 
-![Login](image-2.png)
+![Login](https://media.discordapp.net/attachments/1110721109076221993/1196688534917099602/image.png)
 
 - Existing users can log in here
 - For a quick demo session, click to sign in as the Demo user to explore the site to its fullest extent (ex. create new games, manage games, and leave comments)
@@ -94,7 +93,7 @@ Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to
 
 ## Place a Bet
 
-![Place a Bet](image.png)
+![Place a Bet](https://cdn.discordapp.com/attachments/1110721109076221993/1196688537177829487/image.png)
 
 - As a logged-in user, place bets on various games
 - Each new bet requires details like game name, description, category, and amount to bet
@@ -102,7 +101,7 @@ Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to
 
 ## Manage Bets
 
-![Manage Bets](image.png)
+![Manage Bets](https://cdn.discordapp.com/attachments/1110721109076221993/1196688537702109274/image.png)
 
 - Users can manage and track their bets on the game details page
 - View betting history and update or delete bets as needed
