@@ -1,148 +1,108 @@
-# Flask React Project
+# Khuong's Full Stack Project (Dogsy)
 
-This is the starter for the Flask React project.
+Welcome to Dogsy, an Etsy inspired clone for all pet related items! Feel free to explore the website and check out what our site has to offer for your furry friends. Users can view and review products while browsing Dogsy.The project was built using Flask for back-end and React for front-end.
 
-## Getting started
-1. Clone this repository (only this branch)
+**Click on the link below to visit the live site!**<br>
+[![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+](https://bet2win.onrender.com/)
 
-2. Install dependencies
+**Check out my LinkedIn profile below:**<br>
+[![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/khuong-c-nguyen/)
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+**Languages Used**<br>
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+<!-- ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) -->
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+**Site Preview**<br>
+![Alt Text](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+<!-- ![Alt text](<Screen-Recording-2024-01-13-at-11.17.31 AM.gif>) -->
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+## What can you do on Bet2Win?
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+**1. Explore Betting Options!**<br>
 
-   ```bash
-   pipenv shell
-   ```
+- Navigate through the website as either a registered or unregistered user. Create your own account or simply log in as the demo user for quick access!
 
-   ```bash
-   flask db upgrade
-   ```
+**2. What are the perks of being a registered user?**<br>
 
-   ```bash
-   flask seed all
-   ```
+- Place bets on various events and games
+- Manage your betting history
+- Interact with other users through comments and discussions on events
 
-   ```bash
-   flask run
-   ```
+## How to download Bet2Win on your local computer
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+1. In the root folder:
+
+- create an .env file
+- copy over .envexample content into the new .env file
+- run these commands in terminal
+
+  ```bash
+  pipenv requirements > requirements.txt
+  pipenv install
+  pipenv shell
+  flask db upgrade
+  flask seed all
+  flask run
+  ```
+
+2. cd into the root folder and then run `pipenv run flask run` to start the back-end
+
+3. cd into the react-app folder and then run `npm start` to start the front-end
+
+# Site Summary
+
+## Landing Page
+
+![](https://cdn.discordapp.com/attachments/1110721109076221993/1196641120906641540/image.png)
+
+- This page showcases upcoming and popular betting events
+- Get a preview of the betting options available on Bet2Win
+
+## Main Page
+
+![All products](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
+
+- The main page displays a list of all available games on Betify
+- Anyone can view this page to explore betting options for different games
+
+## Signup
+
+![Sign up](image-3.png)
+
+- Unregistered users can create their own account via the top-right hand corner dropdown menu
+- Invalid information will prompt error messages until user resolves them successfully
+- Automatically logs the new user in if there are no errors in the sign up form
+
+## Login
+
+![Login](image-2.png)
+
+- Existing users can log in here
+- For a quick demo session, click to sign in as the Demo user to explore the site to its fullest extent (ex. create new games, manage games, and leave comments)
+
+## Leave a Comment
+
+![Leave a comment](image.png)
+
+- As a logged-in user, leave comments and discuss upcoming games
+- Engage with other users in the community
+
+## Place a Bet
+
+![Place a Bet](image.png)
+
+- As a logged-in user, place bets on various games
+- Each new bet requires details like game name, description, category, and amount to bet
 
 
-## Deployment through Render.com
+## Manage Bets
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+![Manage Bets](image.png)
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
-
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
-
-_If you are using websockets, use the following start command instead for increased performance:_
-
-`gunicorn --worker-class eventlet -w 1 app:app`
-
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+- Users can manage and track their bets on the game details page
+- View betting history and update or delete bets as needed
