@@ -1,4 +1,4 @@
-# Khuong's Full Stack Project (Dogsy)
+# Khuong's Full Stack Project (Bet2Win)
 
 Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour of the website and discover the diverse range of games available for your betting pleasure. Users can explore, place bets, and engage in discussions on Bet2Win. This project is crafted with Flask for the back-end and React for the front-end, ensuring an enjoyable betting experience.
 
