@@ -13,7 +13,7 @@ export default function UpdateGame({ gameId }) {
   const teamObj = Object.values(teams);
   const game = useSelector((state) => state.games.allGames[gameId]);
   const { closeModal } = useModal();
-  console.log("🚀 >>>>>>>>>> ~ gamessdfsdf:", game);
+  // console.log("🚀 >>>>>>>>>> ~ gamessdfsdf:", game);
 
   const [time, setTime] = useState(game.time);
   const [team1, setTeam1] = useState(game.team_1.id);
