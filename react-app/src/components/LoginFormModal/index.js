@@ -15,7 +15,7 @@ function LoginFormModal() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      console.log("🚀 >>>>>>>>>> ~ data:", data);
+      // console.log("🚀 >>>>>>>>>> ~ data:", data);
       const parsedErrors = Object.fromEntries(
         Object.entries(data).map(([key, value]) => {
           const [fieldName, errorMessage] = value.split(" : ");

@@ -64,7 +64,7 @@ Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour 
 
 ## Main Page
 
-![All products](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
+![All games](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
 
 - The main page displays a list of all available games on Bet2Win
 - Anyone can view this page to explore betting options for different games
@@ -86,7 +86,7 @@ Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour 
 
 ## Leave a Comment
 
-![Leave a comment](image.png)
+<!-- ![Leave a comment](image.png) -->
 
 - As a logged-in user, leave comments and discuss upcoming games
 - Engage with other users in the community
@@ -105,3 +105,8 @@ Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour 
 
 - Users can manage and track their bets on the game details page
 - View betting history and update or delete bets as needed
+
+
+
+
+

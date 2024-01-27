@@ -18,7 +18,7 @@ export default function Game() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const game = useSelector((state) => state.games.allGames[gameId]);
-  console.log("🚀 >>>>>>>>>> ~ game:", game);
+  // console.log("🚀 >>>>>>>>>> ~ game:", game);
   //   const userId = sessionUser?.id;
 
   useEffect(() => {
