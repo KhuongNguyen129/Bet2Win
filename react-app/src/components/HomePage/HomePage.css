@@ -2,7 +2,7 @@
 .homepage-container {
 
     height: 100vh;
-    background-image: url('https://media.discordapp.net/attachments/1110721109076221993/1180589157198860439/IMG_0908.jpg');
+    background-image: url('https://i.imgur.com/IF9AouF.png');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -20,7 +20,7 @@
 }
 
 .redirect-link  > a {
-    background-image: url('https://i.imgur.com/IF9AouF.png');
+    background-image: url('https://images.pexels.com/photos/861443/pexels-photo-861443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
