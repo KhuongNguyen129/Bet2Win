@@ -16,9 +16,6 @@ Welcome to Bet2Win, a platform designed for all your betting needs! Take a tour 
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 <!-- ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) -->
 
-**Site Preview**<br>
-![Alt Text](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png)
-
 <!-- ![Alt text](<Screen-Recording-2024-01-13-at-11.17.31 AM.gif>) -->
 
 ## What can you do on Bet2Win?
